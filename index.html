@@ -1,0 +1,675 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Green Canteen Uppsala</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=BIZ+UDPMincho&display=swap">
+<style>
+/* Layout: brand-guide poster language on the web. Cloud-outlined sticker headlines over
+   flat brand-colour fields and food photography; one pink element per view for the call to action. */
+:root {
+  /* Brand palette (Designguide v1.0) */
+  --hvid: #FFFFFF;
+  --lys-gron: #DFFEAE;
+  --gron: #36471D;
+  --mork-gron: #1A2805;
+  --pink: #FFE1FE;
+
+  /* Theme tokens */
+  --bg: var(--hvid);
+  --bg-alt: var(--lys-gron);
+  --fg: var(--mork-gron);
+  --fg-soft: var(--gron);
+  --line: var(--mork-gron);
+  --sticker-fill: var(--lys-gron);
+  --sticker-fill-alt: var(--hvid);
+  --sticker-ink: var(--mork-gron);
+  --cta: var(--pink);
+  --cta-ink: var(--mork-gron);
+  --band: var(--mork-gron);
+  --band-ink: var(--lys-gron);
+  --card: var(--hvid);
+  --muted: color-mix(in srgb, var(--mork-gron) 62%, var(--hvid));
+
+  --display: "BIZ UDPMincho", "Hiragino Mincho ProN", "Yu Mincho", Georgia, serif;
+  --body: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  --step-0: 1rem;
+  --step-1: 1.25rem;
+  --step-2: 1.6rem;
+  --step-3: clamp(2rem, 4vw, 2.75rem);
+  --step-4: clamp(2.6rem, 6.5vw, 4.5rem);
+  --wrap: 72rem;
+  --radius: 999px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #111A03; --bg-alt: var(--mork-gron); --fg: var(--lys-gron); --fg-soft: #C7E39A;
+    --line: var(--lys-gron); --card: #1F2F08; --band: var(--lys-gron); --band-ink: var(--mork-gron);
+    --muted: color-mix(in srgb, var(--lys-gron) 70%, #111A03);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111A03; --bg-alt: var(--mork-gron); --fg: var(--lys-gron); --fg-soft: #C7E39A;
+  --line: var(--lys-gron); --card: #1F2F08; --band: var(--lys-gron); --band-ink: var(--mork-gron);
+  --muted: color-mix(in srgb, var(--lys-gron) 70%, #111A03);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; } }
+body { background: var(--bg); color: var(--fg); font-family: var(--body); font-size: var(--step-0); line-height: 1.55; overflow-x: hidden; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--fg); outline-offset: 3px; border-radius: 4px; }
+h1, h2, h3 { font-family: var(--display); font-weight: 400; line-height: 1.05; text-wrap: balance; margin: 0; }
+p { margin: 0; }
+.wrap { max-width: var(--wrap); margin-inline: auto; padding-inline: max(16px, 4vw); }
+.eyebrow { font-family: var(--body); font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; font-weight: 500; color: var(--fg-soft); }
+.lede { font-size: var(--step-1); max-width: 34ch; line-height: 1.4; }
+
+/* ---------- Sticker headline (typographic effect) ---------- */
+.sticker { display: block; max-width: 100%; height: auto; overflow: visible; }
+.sticker text { font-family: var(--display); letter-spacing: -.045em; word-spacing: .06em; }
+.sticker .l3 { fill: var(--line); stroke: var(--line); }
+.sticker .l2 { fill: var(--s-fill, var(--sticker-fill)); stroke: var(--s-fill, var(--sticker-fill)); }
+.sticker .l1 { fill: var(--sticker-ink); }
+.sticker.on-dark .l3 { fill: var(--mork-gron); stroke: var(--mork-gron); }
+.sticker.on-dark .l1 { fill: var(--mork-gron); }
+.sticker .l2, .sticker .l3 { stroke-linejoin: round; stroke-linecap: round; filter: url(#sticker-smooth); }
+[data-fill="white"] { --s-fill: var(--sticker-fill-alt); }
+[data-fill="pink"] { --s-fill: var(--pink); }
+
+/* ---------- Header ---------- */
+.site-head { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1.5px solid var(--line); }
+.site-head .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-block: .7rem; }
+.brand { display: flex; align-items: center; gap: .55rem; text-decoration: none; font-family: var(--display); font-size: 1.35rem; white-space: nowrap; }
+.brand svg { width: 1.6rem; height: 1.6rem; color: var(--fg); flex: none; }
+.nav { display: flex; align-items: center; gap: 1.4rem; }
+.nav a { text-decoration: none; font-size: .95rem; }
+.nav a:not(.btn) { text-transform: uppercase; letter-spacing: .06em; font-size: .85rem; font-weight: 500; white-space: nowrap; }
+.btn { text-transform: none; }
+.nav a:not(.btn):hover { text-decoration: underline; text-underline-offset: 4px; }
+.btn { display: inline-flex; align-items: center; gap: .5rem; font: 500 .95rem/1 var(--body); padding: .8rem 1.25rem; border-radius: var(--radius); border: 1.5px solid var(--mork-gron); background: var(--cta); color: var(--cta-ink); text-decoration: none; cursor: pointer; transition: transform .15s ease, box-shadow .15s ease; box-shadow: 0 3px 0 var(--mork-gron); }
+.btn:hover { transform: translateY(-2px); box-shadow: 0 5px 0 var(--mork-gron); }
+.btn:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--mork-gron); }
+.btn.ghost { background: transparent; color: var(--fg); border-color: var(--line); box-shadow: none; }
+.btn.ghost:hover { background: var(--bg-alt); }
+@media (max-width: 760px) {
+  .site-head .wrap { flex-wrap: wrap; row-gap: .5rem; }
+  .brand span { font-size: 1.15rem; }
+  .nav { order: 3; width: 100%; gap: 1.1rem; overflow-x: auto; scrollbar-width: none; padding-bottom: .1rem; }
+  .nav::-webkit-scrollbar { display: none; }
+  .nav .btn { margin-left: auto; }
+}
+
+/* ---------- Hero ---------- */
+.hero { background: var(--lys-gron); color: var(--mork-gron); border-bottom: 1.5px solid var(--mork-gron); position: relative; overflow: hidden; }
+.hero .wrap { display: grid; grid-template-columns: 1.05fr .95fr; gap: 2.5rem; align-items: center; padding-block: 3.5rem 4rem; }
+.hero-copy { display: grid; gap: 1.6rem; min-width: 0; }
+.hero-copy .eyebrow { color: var(--gron); }
+.hero-title { width: min(100%, 36rem); }
+.hero-title .sticker .l2 { fill: var(--hvid); stroke: var(--hvid); }
+.hero-title .sticker .l3 { fill: var(--mork-gron); stroke: var(--mork-gron); }
+.hero-title .sticker .l1 { fill: var(--mork-gron); }
+.hero-actions { display: flex; flex-wrap: wrap; gap: .8rem; }
+.hero .btn.ghost { color: var(--mork-gron); border-color: var(--mork-gron); }
+.hero .btn.ghost:hover { background: var(--hvid); }
+
+.status { display: inline-flex; align-items: center; gap: .6rem; background: var(--hvid); border: 1.5px solid var(--mork-gron); border-radius: var(--radius); padding: .45rem .9rem .45rem .7rem; font-size: .92rem; width: fit-content; max-width: 100%; }
+.status .dot { width: .7rem; height: .7rem; border-radius: 50%; background: #9aa58a; flex: none; }
+.status.open .dot { background: #3E8E1B; box-shadow: 0 0 0 0 rgba(62,142,27,.6); animation: pulse 2s infinite; }
+@keyframes pulse { 70% { box-shadow: 0 0 0 .55rem rgba(62,142,27,0); } 100% { box-shadow: 0 0 0 0 rgba(62,142,27,0); } }
+
+.hero-art { position: relative; min-height: 30rem; min-width: 0; }
+.hero-art .photo { position: absolute; border-radius: 1.25rem; overflow: hidden; border: 1.5px solid var(--mork-gron); background: var(--gron); }
+.hero-art .photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.hero-art .p1 { inset: 0 18% 14% 0; transform: rotate(-2deg); }
+.hero-art .p2 { width: 46%; aspect-ratio: 3/4; right: 0; bottom: 0; transform: rotate(3deg); }
+.drag { position: absolute; z-index: 3; filter: drop-shadow(0 6px 10px rgba(26,40,5,.18)); }
+.drag .sticker .l3 { fill: var(--mork-gron); stroke: var(--mork-gron); }
+.drag .sticker .l1 { fill: var(--mork-gron); }
+@media (max-width: 860px) {
+  .hero .wrap { grid-template-columns: 1fr; padding-block: 2.5rem 3.5rem; }
+  .hero-art { min-height: 24rem; }
+}
+
+
+
+/* ---------- Facts ribbon ---------- */
+.facts { background: var(--band); color: var(--band-ink); }
+.facts .wrap { display: grid; grid-template-columns: repeat(4, 1fr); padding-block: 0; }
+.fact { padding: 1.6rem 1.2rem; border-left: 1px solid color-mix(in srgb, var(--band-ink) 30%, transparent); display: grid; gap: .25rem; min-width: 0; }
+.fact:first-child { border-left: 0; padding-left: 0; }
+.fact b { font-family: var(--display); font-weight: 400; font-size: var(--step-2); line-height: 1.1; font-variant-numeric: tabular-nums; }
+.fact span { font-size: .85rem; opacity: .85; }
+@media (max-width: 760px) { .facts .wrap { grid-template-columns: 1fr 1fr; } .fact { padding: 1.2rem .9rem; } .fact:nth-child(3) { border-left: 0; padding-left: 0; } .fact:nth-child(n+3) { border-top: 1px solid color-mix(in srgb, var(--band-ink) 30%, transparent); } }
+
+/* ---------- Sections ---------- */
+section { scroll-margin-top: 4.5rem; }
+.section { padding-block: clamp(3.5rem, 8vw, 6.5rem); }
+.section-head { display: grid; gap: 1rem; margin-bottom: 2.5rem; max-width: 46rem; }
+.section-head h2 { font-size: var(--step-4); }
+.alt { background: var(--bg-alt); }
+
+/* ---------- Menu ---------- */
+.menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+.dish { position: relative; border: 1.5px solid var(--line); border-radius: 1.4rem; background: var(--card); overflow: hidden; display: grid; grid-template-rows: auto 1fr; text-align: left; font: inherit; color: inherit; padding: 0; cursor: pointer; transition: transform .2s ease; }
+.dish:hover { transform: translateY(-4px) rotate(-.4deg); }
+.dish .art { aspect-ratio: 4/3; position: relative; display: grid; place-items: center; overflow: hidden; }
+.dish .art canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+.dish .art .tag { position: relative; width: 70%; }
+.dish .body { padding: 1.2rem 1.3rem 1.4rem; display: grid; gap: .6rem; align-content: start; }
+.dish h3 { font-size: var(--step-2); }
+.dish p { color: var(--muted); font-size: .95rem; }
+.dish .more { font-size: .85rem; font-weight: 500; display: inline-flex; align-items: center; gap: .35rem; }
+.dish .detail { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .3s ease; }
+.dish .detail > div { overflow: hidden; }
+.dish[aria-expanded="true"] .detail { grid-template-rows: 1fr; }
+.dish .detail .ing { margin-top: .2rem; }
+.dish ul.notes { margin: .2rem 0 0; padding-left: 1.1rem; font-size: .92rem; display: grid; gap: .2rem; }
+.dish .ing { margin: .8rem 0 0; font-size: .9rem; display: grid; gap: .3rem; }
+.dish .ing [data-l] { display: none; }
+.dish .ing[data-lang="en"] [data-l="en"], .dish .ing[data-lang="sv"] [data-l="sv"] { display: block; }
+.dish .lang { display: inline-flex; width: fit-content; border: 1.5px solid var(--line); border-radius: var(--radius); padding: .15rem; gap: .15rem; }
+.dish .lang [data-set] { font-size: .75rem; font-weight: 500; letter-spacing: .06em; padding: .3rem .6rem; border-radius: var(--radius); cursor: pointer; }
+.dish .lang [aria-pressed="true"] { background: var(--lys-gron); color: var(--mork-gron); box-shadow: 0 0 0 1.5px var(--mork-gron); }
+.dish .ing-h { font-weight: 500; font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; color: var(--fg); margin-top: .3rem; }
+.dish .ing-t { color: var(--fg); }
+.dish .ing-t strong { font-weight: 700; text-decoration: underline; text-underline-offset: 2px; }
+.dish .ing-warn { margin-top: .5rem; font-size: .8rem; color: var(--muted); }
+.dish[aria-expanded="true"] .more .chev { transform: rotate(180deg); }
+.chev { transition: transform .2s; display: inline-block; }
+.menu-note { margin-top: 1.5rem; font-size: .9rem; color: var(--muted); max-width: 60ch; }
+@media (max-width: 860px) { .menu-grid { grid-template-columns: 1fr; max-width: 30rem; } }
+
+/* ---------- Journey ---------- */
+.journey { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: .6rem; }
+.step { border: 1.5px solid var(--line); border-radius: 1rem; background: var(--card); }
+.step button { all: unset; box-sizing: border-box; width: 100%; display: grid; grid-template-columns: 2.6rem 1fr auto; gap: 1rem; align-items: center; padding: 1rem 1.2rem; cursor: pointer; }
+.step button:focus-visible { outline: 3px solid var(--fg); outline-offset: 2px; border-radius: 1rem; }
+.step .n { width: 2.6rem; height: 2.6rem; border-radius: 50%; border: 1.5px solid var(--line); display: grid; place-items: center; font-family: var(--display); font-size: 1.15rem; }
+.step.active { background: var(--lys-gron); color: var(--mork-gron); border-color: var(--mork-gron); }
+.step.active .n { background: var(--mork-gron); color: var(--lys-gron); border-color: var(--mork-gron); }
+.step h3 { font-size: 1.3rem; }
+.step small { display: block; font-size: .85rem; opacity: .8; font-family: var(--body); margin-top: .2rem; }
+.journey-panel { position: sticky; top: 6rem; border-radius: 1.5rem; overflow: hidden; border: 1.5px solid var(--line); background: var(--gron); aspect-ratio: 4/5; max-width: 100%; }
+.journey-panel img { width: 100%; height: 100%; object-fit: cover; display: block; transition: opacity .35s ease; }
+.journey-panel .cap { position: absolute; left: 1rem; right: 1rem; bottom: 1rem; background: var(--hvid); color: var(--mork-gron); border: 1.5px solid var(--mork-gron); border-radius: 1rem; padding: 1rem 1.1rem; display: grid; gap: .3rem; }
+.journey-panel .cap b { font-family: var(--display); font-weight: 400; font-size: 1.3rem; }
+@media (max-width: 860px) { .journey { grid-template-columns: 1fr; } .journey-panel { position: relative; top: 0; aspect-ratio: 4/3; } }
+
+/* ---------- Quote band ---------- */
+.quote { background: var(--pink); color: var(--mork-gron); border-block: 1.5px solid var(--mork-gron); }
+.quote .wrap { display: grid; grid-template-columns: auto 1fr; gap: 3rem; align-items: center; padding-block: clamp(3rem, 7vw, 5rem); }
+.quote blockquote { margin: 0; font-family: var(--display); font-size: var(--step-3); line-height: 1.2; text-wrap: balance; }
+.quote figcaption { margin-top: 1.2rem; font-size: .95rem; }
+.quote .sym { width: clamp(5rem, 12vw, 9rem); color: var(--mork-gron); animation: spin 40s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+@media (max-width: 640px) { .quote .wrap { grid-template-columns: 1fr; gap: 1.5rem; } }
+
+/* ---------- Climate ---------- */
+.climate { display: grid; grid-template-columns: .9fr 1.1fr; gap: 3rem; align-items: start; }
+.climate .copy { display: grid; gap: 1.2rem; min-width: 0; }
+.climate .copy p { max-width: 52ch; }
+.toggle { display: grid; grid-template-columns: repeat(3, auto); border: 1.5px solid var(--line); border-radius: 1rem; padding: .3rem; gap: .3rem; background: var(--card); width: fit-content; max-width: 100%; }
+.toggle button { font: 500 .9rem/1.2 var(--body); border: 0; background: transparent; color: var(--fg); padding: .75rem 1rem; border-radius: .7rem; cursor: pointer; text-align: center; transition: background .15s, color .15s; }
+.toggle button:hover { background: color-mix(in srgb, var(--fg) 10%, transparent); }
+.toggle button[aria-pressed="true"] { background: var(--lys-gron); color: var(--mork-gron); box-shadow: 0 0 0 1.5px var(--mork-gron); }
+@media (max-width: 560px) { .toggle { grid-template-columns: 1fr; width: 100%; } }
+.meters { border: 1.5px solid var(--line); border-radius: 1.5rem; padding: 1.6rem; background: var(--card); display: grid; gap: 1.6rem; min-width: 0; }
+.meter { display: grid; gap: .55rem; }
+.meter-top { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
+.meter-top h3 { font-size: 1.35rem; }
+.meter-top output { font-family: var(--display); font-size: var(--step-2); font-variant-numeric: tabular-nums; }
+.track { position: relative; height: 2.6rem; border-radius: var(--radius); border: 1.5px solid var(--line); overflow: hidden; background: var(--bg); }
+.fill { position: absolute; inset: 0 auto 0 0; width: 100%; background: var(--lys-gron); border-right: 1.5px solid var(--mork-gron); transition: width .8s cubic-bezier(.3,1.3,.5,1); }
+.baseline-mark { position: absolute; top: -1px; bottom: -1px; left: 100%; }
+.meter small { font-size: .82rem; color: var(--muted); }
+.source { font-size: .82rem; color: var(--muted); }
+.goals { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: 3.5rem; border-top: 1.5px solid var(--line); }
+.goal { padding: 1.4rem 1.2rem 0 0; display: grid; gap: .4rem; position: relative; min-width: 0; }
+.goal::before { content: ""; position: absolute; top: -.55rem; left: 0; width: 1rem; height: 1rem; border-radius: 50%; background: var(--bg); border: 1.5px solid var(--line); }
+.goal.now::before { background: var(--fg); }
+.goal b { font-family: var(--display); font-weight: 400; font-size: var(--step-3); font-variant-numeric: tabular-nums; }
+.goal span { font-size: .95rem; max-width: 26ch; }
+.goal em { font-style: normal; font-size: .8rem; color: var(--muted); }
+@media (max-width: 860px) { .climate { grid-template-columns: 1fr; } }
+@media (max-width: 560px) { .goals { grid-template-columns: 1fr; border-top: 0; border-left: 1.5px solid var(--line); margin-left: .5rem; } .goal { padding: 0 0 1.6rem 1.5rem; } .goal::before { top: .35rem; left: -.6rem; } }
+
+/* ---------- Get involved ---------- */
+.involve { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+.tabs { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1.5rem; }
+.tabs button { font: 500 .95rem/1 var(--body); padding: .8rem 1.2rem; border-radius: var(--radius); border: 1.5px solid var(--line); background: var(--card); color: var(--fg); cursor: pointer; }
+.tabs button[aria-selected="true"] { background: var(--mork-gron); color: var(--lys-gron); border-color: var(--mork-gron); }
+.panel { border: 1.5px solid var(--line); border-radius: 1.5rem; background: var(--card); padding: clamp(1.4rem, 3vw, 2.4rem); display: grid; grid-template-columns: 1.2fr .8fr; gap: 2rem; align-items: center; }
+.panel h3 { font-size: var(--step-3); margin-bottom: 1rem; }
+.panel p { max-width: 50ch; }
+.panel ul { margin: 1rem 0 1.4rem; padding-left: 1.1rem; display: grid; gap: .35rem; }
+.panel .pic { border-radius: 1rem; overflow: hidden; border: 1.5px solid var(--line); aspect-ratio: 1; max-width: 100%; }
+.panel .pic img { width: 100%; height: 100%; object-fit: cover; display: block; }
+@media (max-width: 760px) { .panel { grid-template-columns: 1fr; } .panel .pic { aspect-ratio: 16/10; order: -1; } }
+
+/* ---------- FAQ ---------- */
+.faq { display: grid; gap: .6rem; max-width: 48rem; }
+.faq details { border: 1.5px solid var(--line); border-radius: 1rem; background: var(--card); }
+.faq summary { list-style: none; cursor: pointer; padding: 1.1rem 1.3rem; display: flex; justify-content: space-between; gap: 1rem; align-items: center; font-family: var(--display); font-size: 1.25rem; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; font-family: var(--body); font-size: 1.5rem; line-height: 1; transition: transform .2s; }
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq details > div { padding: 0 1.3rem 1.2rem; max-width: 60ch; color: var(--muted); }
+
+/* ---------- Footer ---------- */
+.foot { background: var(--mork-gron); color: var(--lys-gron); padding-block: 4rem 2.5rem; }
+.foot .wrap { display: grid; gap: 2.5rem; }
+.foot-top { display: grid; grid-template-columns: auto 1fr auto; gap: 2rem; align-items: start; }
+.foot .sym { width: 4.5rem; color: var(--lys-gron); }
+.foot p { max-width: 44ch; }
+.foot .addr { font-size: .95rem; display: grid; gap: .2rem; }
+.foot .addr b { font-family: var(--display); font-weight: 400; font-size: 1.2rem; }
+.foot-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; font-size: .82rem; opacity: .8; border-top: 1px solid color-mix(in srgb, var(--lys-gron) 30%, transparent); padding-top: 1.4rem; }
+@media (max-width: 760px) { .foot-top { grid-template-columns: 1fr; } }
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="gc-symbol" viewBox="0 0 207.77 212.09"><path fill="currentColor" d="M148.18 96.04L170.26 96.04C183.31 96.04 187.66 95.37 194.01 94.030C205.39 91.69 207.73 82.65 207.73 75.30C207.73 48.20 172.60 20.09 149.50 60.24C184.63 0.03 61.51 0.03 96.65 60.24C61.55 0.00 0.00 106.05 70.25 106.05C0.00 106.05 61.55 212.09 96.68 151.88C61.55 212.09 184.67 212.09 149.53 151.88C172.62 192.03 207.770 158.25 207.77 131.13C207.77 123.11 206.76 113.41 199.07 109.72C194.05 106.72 179.00 106.72 161.26 106.72L131.80 106.72L131.80 113.41C138.17 113.41 145.18 115.41 145.18 119.78L145.18 126.80C145.18 132.83 134.81 139.85 124.44 139.85C113.73 139.85 106.71 136.21 101.020 128.48C97.38 123.46 95.34 116.10 95.34 107.74C95.34 98.37 98.01 91.01 103.70 84.65C108.71 78.96 114.40 75.29 124.44 75.29C136.44 75.25 146.60 84.14 148.18 96.04"/></symbol>
+</svg>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><filter id="sticker-smooth" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse" x="-3000" y="-3000" width="6000" height="6000"><feMorphology operator="dilate" radius="7"/><feMorphology operator="erode" radius="7"/><feGaussianBlur stdDeviation="7"/><feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 30 -14"/></filter></svg>
+
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Green Canteen, back to top"><svg aria-hidden="true"><use href="#gc-symbol"/></svg><span>Green Canteen</span></a>
+    <nav class="nav" aria-label="Main">
+      <a href="#menu">Menu</a>
+      <a href="#how">How it works</a>
+      <a href="#why">Why plant-based</a>
+      <a href="#faq">FAQ</a>
+      <a class="btn" href="#join">Join us</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap">
+      <div class="hero-copy">
+        <p class="eyebrow">Plant-Based Campus Uppsala · Est. 28 August 2026</p>
+        <h1 id="hero-title" class="hero-title"><span class="visually-hidden" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Good food, cooked by students, for students</span><span data-sticker="Good food,|cooked by|students, for|students" data-size="90" aria-hidden="true"></span></h1>
+        <p class="lede">Fully plant-based lunchboxes, cooked and sold by student volunteers at the Uppsala Student Union. 59&nbsp;SEK, every Monday to Thursday.</p>
+        <div class="status" id="status" role="status"><span class="dot"></span><span id="status-text">Checking opening hours…</span></div>
+        <div class="hero-actions">
+          <a class="btn" href="#join">Volunteer with us</a>
+          <a class="btn ghost" href="#menu">See the menu</a>
+        </div>
+      </div>
+      <div class="hero-art" id="playground">
+        <div class="photo p1"><img src="assets/bowl.jpg" alt="A plant-based bowl topped with herbs, seeds and sauce"></div>
+        <div class="photo p2"><img src="assets/noodles.jpg" alt="A student holding a bowl of noodles with chopsticks"></div>
+        <div class="drag" style="left:2%;top:4%;width:56%;transform:rotate(-6deg)" data-fill="pink"><span data-sticker="Cheap.|Tasty.|Sustainable." data-size="90"></span></div>
+        <div class="drag" style="left:34%;top:62%;width:46%;transform:rotate(-6deg)"><span data-sticker="As good|as it looks" data-size="90"></span></div>
+        <div class="drag" style="right:0%;top:0%;width:34%;transform:rotate(7deg)" data-fill="white"><span data-sticker="59 SEK|lunch" data-size="90"></span></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="facts" aria-label="Key facts">
+    <div class="wrap">
+      <div class="fact"><b>59 SEK</b><span>per lunchbox, about €5</span></div>
+      <div class="fact"><b>Mon–Thu</b><span>09:00–16:00</span></div>
+      <div class="fact"><b>Övre Slottsgatan 7</b><span>Uppsala Student Union</span></div>
+      <div class="fact"><b>100%</b><span>plant-based and volunteer-run</span></div>
+    </div>
+  </div>
+
+
+  <section id="menu" class="section" aria-labelledby="menu-title">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">On the menu</p>
+        <h2 id="menu-title">Warm, filling, and cheaper than the café queue</h2>
+        <p class="lede">Hearty one-pot dishes built on beans, lentils and chickpeas. Tap a box to learn more.</p>
+      </div>
+      <div class="menu-grid" id="menu-grid"></div>
+      <p class="menu-note">These are dishes from our launch week. The menu rotates with what our volunteer cooks are making, so ask at the counter what's in the boxes today.</p>
+    </div>
+  </section>
+
+  <section id="how" class="section alt" aria-labelledby="how-title">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">From pot to plate</p>
+        <h2 id="how-title">How a lunchbox gets to you</h2>
+        <p class="lede">A student-run non-profit, not a company. Every box passes only through student hands.</p>
+      </div>
+      <div class="journey">
+        <ol class="steps" id="steps"></ol>
+        <div class="journey-panel" aria-live="polite">
+          <img id="journey-img" src="assets/tomatoes.jpg" alt="">
+          <div class="cap"><b id="journey-cap-title"></b><span id="journey-cap-text"></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="quote" aria-label="Quote">
+    <div class="wrap">
+      <svg class="sym" aria-hidden="true"><use href="#gc-symbol"/></svg>
+      <figure style="margin:0">
+        <blockquote>“We wanted to show that student-run catering can work, and that good food doesn't have to be expensive or hard on the climate.”</blockquote>
+        <figcaption>Rurik Svensson, Coordinator, Plant-Based Campus Uppsala</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="why" class="section" aria-labelledby="why-title">
+    <div class="wrap">
+      <div class="climate">
+        <div class="copy">
+          <p class="eyebrow">Why plant-based</p>
+          <h2 id="why-title" style="font-size:var(--step-4)">Less meat on the plate, less pressure on the planet</h2>
+          <p>Research by Elin Röös at the Swedish University of Agricultural Sciences (SLU) looked at what happens when Swedes eat half as much meat, and a study by Bunge et al. looked at fully vegan diets. Switch the diet below and watch the footprint change.</p>
+          <div class="toggle" role="group" aria-label="Choose a diet">
+            <button type="button" id="diet-now" aria-pressed="false">Typical Swedish diet</button>
+            <button type="button" id="diet-half" aria-pressed="false">50% less meat</button>
+            <button type="button" id="diet-plant" aria-pressed="true">100% plant-based</button>
+          </div>
+        </div>
+        <div class="meters">
+          <div class="meter">
+            <div class="meter-top"><h3>Climate impact</h3><output id="out-climate">−52%</output></div>
+            <div class="track" aria-hidden="true"><div class="fill" id="fill-climate"></div></div>
+            <small>Relative to today's typical Swedish diet (100%).</small>
+          </div>
+          <div class="meter">
+            <div class="meter-top"><h3>Land use</h3><output id="out-land">−44%</output></div>
+            <div class="track" aria-hidden="true"><div class="fill" id="fill-land"></div></div>
+            <small>Farmland needed to feed the same people.</small>
+          </div>
+          <p class="source">Sources: Röös et al., SLU (50% less meat); Bunge et al., Nature Communications, 2024 (vegan diet with plant-based alternatives). A Green Canteen box is 100% plant-based.</p>
+        </div>
+      </div>
+
+      <div class="goals" aria-label="Timeline">
+        <div class="goal now"><b>2026</b><span>Green Canteen sells its first lunchbox at the Student Union.</span><em>28 August 2026</em></div>
+        <div class="goal"><b>2030</b><span>Uppsala University aims to halve its climate impact.</span><em>University sustainability goal</em></div>
+        <div class="goal"><b>2045</b><span>Uppsala University aims to be climate neutral.</span><em>University sustainability goal</em></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="join" class="section alt" aria-labelledby="join-title">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Get involved</p>
+        <h2 id="join-title">Pick up a box, a ladle, or a partnership</h2>
+      </div>
+      <div class="tabs" role="tablist" aria-label="Ways to get involved">
+        <button role="tab" id="tab-eat" aria-selected="true" aria-controls="panel">Eat with us</button>
+        <button role="tab" id="tab-cook" aria-selected="false" aria-controls="panel">Volunteer</button>
+        <button role="tab" id="tab-partner" aria-selected="false" aria-controls="panel">Partner</button>
+      </div>
+      <div class="panel" id="panel" role="tabpanel" aria-labelledby="tab-eat"></div>
+    </div>
+  </section>
+
+  <section id="faq" class="section" aria-labelledby="faq-title">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Good to know</p>
+        <h2 id="faq-title">Questions</h2>
+      </div>
+      <div class="faq">
+        <details><summary>Where can I buy a lunchbox?</summary><div>At the Uppsala Student Union, Övre Slottsgatan 7. Look for the Green Canteen counter.</div></details>
+        <details><summary>When are you open?</summary><div>Monday to Thursday, 09:00–16:00. Boxes are made in batches, so popular days can sell out before closing.</div></details>
+        <details><summary>How much does it cost?</summary><div>59 SEK, roughly €5, for a full lunch.</div></details>
+        <details><summary>Is everything vegan?</summary><div>Yes. Every dish is 100% plant-based: no meat, fish, dairy or eggs.</div></details>
+        <details><summary>Who cooks the food?</summary><div>Student volunteers from Plant-Based Campus Uppsala. Meals are prepared at Ulleråkergård and brought to the Student Union.</div></details>
+        <details><summary>Can my student union or nation work with you?</summary><div>We'd like that. We are looking for more partners, including at SLU Uppsala. Reach out through the Plant-Based Campus website.</div></details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-top">
+      <svg class="sym" aria-hidden="true"><use href="#gc-symbol"/></svg>
+      <div style="display:grid;gap:1rem;min-width:0">
+        <p style="font-family:var(--display);font-size:var(--step-2);line-height:1.2">Green Canteen is a student-run lunch project by Plant-Based Campus Uppsala.</p>
+        <p>Read more and get in touch at <a href="https://www.plantbasedcampus.org">plantbasedcampus.org</a>.</p>
+      </div>
+      <div class="addr"><b>Find us</b><span>Uppsala Student Union</span><span>Övre Slottsgatan 7</span><span>Mon–Thu, 09:00–16:00</span></div>
+    </div>
+    <div class="foot-bottom"><span>© 2026 Plant-Based Campus</span><span>Keep it green.</span></div>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const NS = "http://www.w3.org/2000/svg";
+
+  /* ---------- Sticker headline: the guide's three-layer outline effect ---------- */
+  function buildSticker(host) {
+    const lines = host.dataset.sticker.split("|");
+    const size = +host.dataset.size || 90;
+    const lh = size * 1.0;
+    const inner = size * 0.62;   // light outline (26 mm at 90 pt in the guide)
+    const outer = inner + size * 0.12; // dark outline, slightly wider (30 mm)
+    const svg = document.createElementNS(NS, "svg");
+    svg.setAttribute("class", "sticker");
+    svg.setAttribute("aria-hidden", "true");
+    const make = (cls, sw) => {
+      const g = document.createElementNS(NS, "g");
+      g.setAttribute("class", cls);
+      if (sw) g.setAttribute("stroke-width", sw);
+      lines.forEach((t, i) => {
+        const tx = document.createElementNS(NS, "text");
+        tx.setAttribute("x", 0);
+        tx.setAttribute("y", i * lh);
+        tx.setAttribute("text-anchor", "middle");
+        tx.setAttribute("font-size", size);
+        tx.textContent = t;
+        g.appendChild(tx);
+      });
+      return g;
+    };
+    svg.append(make("l3", outer), make("l2", inner), make("l1"));
+    host.replaceChildren(svg);
+    const fit = () => {
+      const b = svg.querySelector(".l1").getBBox();
+      const pad = outer / 2 + 2;
+      svg.setAttribute("viewBox", `${b.x - pad} ${b.y - pad} ${b.width + pad * 2} ${b.height + pad * 2}`);
+      svg.setAttribute("width", b.width + pad * 2);
+      svg.setAttribute("height", b.height + pad * 2);
+      svg.style.width = "100%";
+      svg.style.height = "auto";
+    };
+    fit();
+    return fit;
+  }
+  const fits = [...document.querySelectorAll("[data-sticker]")].map(buildSticker);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => fits.forEach(f => f()));
+
+  /* ---------- Open / closed status (Stockholm time) ---------- */
+  function updateStatus() {
+    const el = document.getElementById("status"), txt = document.getElementById("status-text");
+    const parts = Object.fromEntries(new Intl.DateTimeFormat("en-GB", { timeZone: "Europe/Stockholm", weekday: "short", hour: "2-digit", minute: "2-digit", hourCycle: "h23" }).formatToParts(new Date()).map(p => [p.type, p.value]));
+    const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+    const d = days.indexOf(parts.weekday), mins = +parts.hour * 60 + +parts.minute;
+    const openDay = d >= 0 && d <= 3, open = openDay && mins >= 540 && mins < 960;
+    el.classList.toggle("open", open);
+    if (open) {
+      const left = 960 - mins;
+      txt.textContent = `Open now · closes at 16:00 (${left >= 60 ? Math.floor(left / 60) + " h " : ""}${left % 60} min left)`;
+    } else {
+      let next;
+      if (openDay && mins < 540) next = "today at 09:00";
+      else if (d >= 0 && d <= 2) next = "tomorrow at 09:00";
+      else next = "Monday at 09:00";
+      txt.textContent = `Closed now · next lunch ${next}`;
+    }
+  }
+  updateStatus();
+  setInterval(updateStatus, 30000);
+
+  /* ---------- Menu ---------- */
+  const dishes = [
+    { name: "Chilli sin carne", tag: "Smoky|& sweet", hue: ["#FFE1FE", "#36471D"], fill: "white",
+      desc: "Smoky sweet potato and black bean chilli.",
+      notes: ["Black beans for protein and fibre", "Sweet potato for body and a little sweetness", "Smoky, warming spice"],
+      ing: { en: "Rice, sweet potato [20 %], black beans [10 %], kidney beans [10 %], bell peppers, crushed tomatoes, onion, chili powder, ground cumin, smoked paprika, vegetable broth (concentrated vegetable stock 67 % (water, vegetable juice concentrate 12 % (carrot, onion, leek)), salt, natural flavouring, sugar, flavouring, parsnip 1.0 %, modified corn starch, acid (citric acid), thickener (xanthan gum), garlic powder, sunflower oil), coriander, rapeseed oil.", sv: "Ris, sötpotatis [20 %], svarta bönor [10 %], kidneybönor [10 %], paprika, krossade tomater, lök, chilipulver, spiskummin, rökt paprikapulver, grönsaksbuljong (koncentrerad grönsaksfond 67 % (vatten, grönsaksjuicekoncentrat 12 % (morot, lök, purjolök)), salt, naturlig arom, socker, arom, palsternacka 1,0 %, modifierad majsstärkelse, syra (citronsyra), förtjockningsmedel (xantangummi), vitlökspulver, solrosolja), koriander, rapsolja." } },
+    { name: "Red lentil dal", tag: "Cosy|& golden", hue: ["#DFFEAE", "#1A2805"], fill: "pink",
+      desc: "Slow-simmered red lentils with warm spices.",
+      notes: ["Red lentils cook down soft and creamy", "Warm spices like cumin and turmeric", "A lunch that keeps you going through a lecture"],
+      ing: { en: "Rice, red lentils [35 %], crushed tomatoes, coconut milk, onion, garlic, ginger, garam masala (spices (ginger, cumin, coriander, cardamom, cinnamon, black pepper, cayenne pepper, cloves), paprika, salt, onion, garlic, sugar), turmeric, red pepper chilli flakes, cinnamon, vegetable broth (concentrated vegetable stock 67 % (water, vegetable juice concentrate 12 % (carrot, onion, leek)), salt, natural flavouring, sugar, flavouring, parsnip 1.0 %, modified corn starch, acid (citric acid), thickener (xanthan gum), garlic powder, sunflower oil), rapeseed oil, chives.", sv: "Ris, röda linser [35 %], krossade tomater, kokosmjölk, lök, vitlök, ingefära, garam masala (kryddor (ingefära, spiskummin, koriander, kardemumma, kanel, svartpeppar, cayennepeppar, kryddnejlika), paprika, salt, lök, vitlök, socker), gurkmeja, chiliflakes, kanel, grönsaksbuljong (koncentrerad grönsaksfond 67 % (vatten, grönsaksjuicekoncentrat 12 % (morot, lök, purjolök)), salt, naturlig arom, socker, arom, palsternacka 1,0 %, modifierad majsstärkelse, syra (citronsyra), förtjockningsmedel (xantangummi), vitlökspulver, solrosolja), rapsolja, gräslök." } },
+    { name: "Coconut chickpea curry", tag: "Creamy|& mild", hue: ["#FFFFFF", "#36471D"], fill: "green",
+      desc: "Creamy coconut curry with chickpeas.",
+      notes: ["Chickpeas in a coconut milk sauce", "Creamy and mild rather than hot", "Good for a first plant-based lunch"],
+      ing: { en: "Rice, chickpeas [20 %], coconut milk [20 %], diced tomatoes, onion, spinach, garlic, mild curry powder (coriander, turmeric, fennel, cumin, fenugreek seed, black pepper, cayenne pepper), garam masala (spices (ginger, cumin, coriander, cardamom, cinnamon, black pepper, cayenne pepper, cloves), paprika, salt, onion, garlic, sugar), chilli flakes (optional), rapeseed oil.", sv: "Ris, kikärtor [20 %], kokosmjölk [20 %], tärnade tomater, lök, spenat, vitlök, mild curryblandning (koriander, gurkmeja, fänkål, spiskummin, bockhornsklöverfrö, svartpeppar, cayennepeppar), garam masala (kryddor (ingefära, spiskummin, koriander, kardemumma, kanel, svartpeppar, cayennepeppar, kryddnejlika), paprika, salt, lök, vitlök, socker), chiliflakes (valfritt), rapsolja." } }
+  ];
+  const grid = document.getElementById("menu-grid");
+  dishes.forEach((d, i) => {
+    const b = document.createElement("button");
+    b.className = "dish"; b.type = "button"; b.setAttribute("aria-expanded", "false"); b.id = "dish-" + i;
+    b.innerHTML = `<div class="art"><canvas></canvas><span class="tag" ${d.fill !== "green" ? `data-fill="${d.fill}"` : ""}><span data-sticker="${d.tag}" data-size="90"></span></span></div>
+      <div class="body"><h3>${d.name}</h3><p>${d.desc}</p>
+        <ul class="notes">${d.notes.map(n => `<li>${n}</li>`).join("")}</ul>
+        <span class="more">What's in it <span class="chev">▾</span></span>
+        <div class="detail"><div>
+          <div class="ing" data-lang="en">
+            <span class="lang" role="group" aria-label="Language / Språk"><span role="button" tabindex="0" data-set="en" aria-pressed="true">EN</span><span role="button" tabindex="0" data-set="sv" aria-pressed="false">SV</span></span>
+            <p class="ing-h" data-l="en">Ingredients</p><p class="ing-h" data-l="sv">Ingredienser</p>
+            <p class="ing-t" lang="en" data-l="en">${d.ing.en}</p><p class="ing-t" lang="sv" data-l="sv">${d.ing.sv}</p>
+            <p class="ing-warn" lang="en" data-l="en">Ingredients and allergens can change. Always check the information at the point of sale. We cannot guarantee that the meals are completely free from traces of other allergens, as they are prepared in a shared kitchen.</p>
+            <p class="ing-warn" lang="sv" data-l="sv">Ingredienser och allergener kan ändras. Kontrollera alltid informationen vid försäljningsstället. Vi kan inte garantera att måltiderna är helt fria från spår av andra allergener, då maten tillagas i ett delat kök.</p>
+            <p class="ing-warn" lang="en" data-l="en">Produced by Plant-Based Campus (Amanuensgatan 1, 752 57 Uppsala, Sweden), organisation number 8025487276.</p>
+            <p class="ing-warn" lang="sv" data-l="sv">Producerat av Plant-Based Campus (Amanuensgatan 1, 752 57 Uppsala), organisationsnummer 8025487276.</p>
+          </div></div></div></div>`;
+    b.addEventListener("click", () => b.setAttribute("aria-expanded", b.getAttribute("aria-expanded") === "true" ? "false" : "true"));
+    b.querySelectorAll(".lang [data-set]").forEach(t => {
+      const pick = e => {
+        e.stopPropagation(); e.preventDefault();
+        const box = t.closest(".ing"); box.dataset.lang = t.dataset.set;
+        box.querySelectorAll("[data-set]").forEach(x => x.setAttribute("aria-pressed", x === t));
+      };
+      t.addEventListener("click", pick);
+      t.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") pick(e); });
+    });
+    grid.appendChild(b);
+    const f = buildSticker(b.querySelector("[data-sticker]"));
+    fits.push(f);
+    b.querySelector(".tag .sticker").classList.add("on-dark");
+    drawRipples(b.querySelector("canvas"), d.hue[0], d.hue[1], i);
+  });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => fits.forEach(f => f()));
+
+  /* Concentric "growing" outlines, echoing the guide's social post */
+  function drawRipples(cv, bg, ink, seed) {
+    const draw = () => {
+      const r = cv.getBoundingClientRect(), dpr = window.devicePixelRatio || 1;
+      if (!r.width) return;
+      cv.width = r.width * dpr; cv.height = r.height * dpr;
+      const c = cv.getContext("2d"); c.scale(dpr, dpr);
+      c.fillStyle = bg; c.fillRect(0, 0, r.width, r.height);
+      const cx = r.width / 2, cy = r.height / 2;
+      for (let k = 14; k >= 1; k--) {
+        c.beginPath();
+        const base = k * Math.max(r.width, r.height) / 16;
+        for (let a = 0; a <= Math.PI * 2 + .01; a += .04) {
+          const wob = 1 + .07 * Math.sin(a * 6 + seed) + .03 * Math.sin(a * 11 + seed * 2);
+          const x = cx + Math.cos(a) * base * wob * 1.25, y = cy + Math.sin(a) * base * wob;
+          a === 0 ? c.moveTo(x, y) : c.lineTo(x, y);
+        }
+        c.closePath();
+        c.fillStyle = k % 2 ? ink : bg; c.fill();
+        c.lineWidth = 1.5; c.strokeStyle = ink; c.stroke();
+      }
+    };
+    draw();
+    new ResizeObserver(draw).observe(cv);
+  }
+
+  /* ---------- Journey ---------- */
+  const steps = [
+    { t: "Cooked at Ulleråkergård", s: "Volunteers batch-cook", img: "assets/tomatoes.jpg", alt: "A pile of heirloom tomatoes",
+      cap: "Volunteer cooks prepare big pots of plant-based food in the kitchen at Ulleråkergård." },
+    { t: "Packed into lunchboxes", s: "Portioned by hand", img: "assets/bowl.jpg", alt: "A plated plant-based bowl",
+      cap: "Each dish is portioned into a lunchbox, ready to go." },
+    { t: "Sold at the Student Union", s: "Övre Slottsgatan 7", img: "assets/noodles.jpg", alt: "A student holding a bowl of noodles",
+      cap: "Boxes go on sale Monday to Thursday, 09:00–16:00, for 59 SEK each." },
+    { t: "Eaten together", s: "Fuel for the afternoon", img: "assets/table.jpg", alt: "A table full of shared plant-based dishes",
+      cap: "You get a filling lunch, and every box shows student-run catering can work." }
+  ];
+  const ol = document.getElementById("steps"), jimg = document.getElementById("journey-img");
+  const jt = document.getElementById("journey-cap-title"), jx = document.getElementById("journey-cap-text");
+  function pick(i) {
+    ol.querySelectorAll(".step").forEach((li, k) => { li.classList.toggle("active", k === i); li.querySelector("button").setAttribute("aria-pressed", k === i); });
+    jimg.style.opacity = 0;
+    setTimeout(() => { jimg.src = steps[i].img; jimg.alt = steps[i].alt; jimg.style.opacity = 1; }, 180);
+    jt.textContent = steps[i].t; jx.textContent = steps[i].cap;
+  }
+  steps.forEach((s, i) => {
+    const li = document.createElement("li"); li.className = "step";
+    li.innerHTML = `<button type="button" id="step-${i}"><span class="n">${i + 1}</span><span><h3>${s.t}</h3><small>${s.s}</small></span><span class="chev" aria-hidden="true">→</span></button>`;
+    li.querySelector("button").addEventListener("click", () => pick(i));
+    ol.appendChild(li);
+  });
+  pick(0);
+
+  /* ---------- Climate toggle ---------- */
+  const vals = {
+    now:   { c: 100, l: 100, ct: "100%", lt: "100%" },
+    half:  { c: 80,  l: 77,  ct: "−20%", lt: "−23%" },
+    plant: { c: 48,  l: 56,  ct: "−52%", lt: "−44%" }
+  };
+  function setDiet(k) {
+    ["now", "half", "plant"].forEach(d => document.getElementById("diet-" + d).setAttribute("aria-pressed", d === k));
+    document.getElementById("fill-climate").style.width = vals[k].c + "%";
+    document.getElementById("fill-land").style.width = vals[k].l + "%";
+    document.getElementById("out-climate").textContent = vals[k].ct;
+    document.getElementById("out-land").textContent = vals[k].lt;
+  }
+  ["now", "half", "plant"].forEach(d => document.getElementById("diet-" + d).addEventListener("click", () => setDiet(d)));
+  setDiet("plant");
+
+  /* ---------- Get involved tabs ---------- */
+  const panels = {
+    "tab-eat": { h: "Grab lunch", img: "assets/bowl.jpg", alt: "A plant-based bowl",
+      p: "The easiest way to help is to eat. Every box you buy keeps the kitchen running and shows the Student Union that plant-based lunches sell.",
+      li: ["59 SEK per box", "Monday to Thursday, 09:00–16:00", "Uppsala Student Union, Övre Slottsgatan 7"],
+      cta: ["See today's status", "#top"] },
+    "tab-cook": { h: "Join the kitchen", img: "assets/salad-bite.jpg", alt: "A person taking a bite of fresh greens",
+      p: "Green Canteen runs entirely on volunteers. We need people to cook, pack and sell. No experience needed, just a few hours and an appetite for good food.",
+      li: ["Cook at Ulleråkergård", "Pack and carry lunchboxes", "Sell at the Student Union counter"],
+      cta: ["Contact Plant-Based Campus", "https://www.plantbasedcampus.org"] },
+    "tab-partner": { h: "Partner with us", img: "assets/table.jpg", alt: "A shared table of plant-based dishes",
+      p: "We want to bring plant-based lunches to more of Uppsala's campuses, including SLU Uppsala. Student unions, nations and kitchens are welcome to get in touch.",
+      li: ["Host a sales point", "Share kitchen space", "Co-organise events and shared meals"],
+      cta: ["Get in touch", "https://www.plantbasedcampus.org"] }
+  };
+  const panel = document.getElementById("panel");
+  function showTab(id) {
+    document.querySelectorAll('[role="tab"]').forEach(t => { t.setAttribute("aria-selected", t.id === id); t.tabIndex = t.id === id ? 0 : -1; });
+    const d = panels[id];
+    panel.setAttribute("aria-labelledby", id);
+    const ext = d.cta[1].startsWith("http");
+    panel.innerHTML = `<div style="min-width:0"><h3>${d.h}</h3><p>${d.p}</p><ul>${d.li.map(x => `<li>${x}</li>`).join("")}</ul>
+      <a class="btn" href="${d.cta[1]}" ${ext ? 'target="_blank" rel="noopener"' : ""}>${d.cta[0]}${ext ? " ↗" : ""}</a></div>
+      <div class="pic"><img src="${d.img}" alt="${d.alt}"></div>`;
+  }
+  const tabs = [...document.querySelectorAll('[role="tab"]')];
+  tabs.forEach((t, i) => {
+    t.addEventListener("click", () => showTab(t.id));
+    t.addEventListener("keydown", e => {
+      if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+      const n = tabs[(i + (e.key === "ArrowRight" ? 1 : tabs.length - 1)) % tabs.length];
+      n.focus(); showTab(n.id);
+    });
+  });
+  showTab("tab-eat");
+})();
+</script>
