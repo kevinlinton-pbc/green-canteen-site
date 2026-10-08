@@ -5,6 +5,8 @@
  * Copy the "/exec" URL into FORM_ENDPOINT in contact.html.
  */
 const TO = "greencanteen@plantbasedcampus.org";
+const COPY_TO = "kevin.linton@plantbasedcampus.org"; // direct copy, because Gmail hides group mail sent by this account from its own inbox
+const FROM = "no-reply@plantbasedcampus.org"; // must be a Send-as alias in the deploying account
 const MAX_PER_HOUR = 20; // global cap, a cheap brake against spam floods
 
 function doPost(e) {
@@ -36,12 +38,13 @@ function doPost(e) {
     clean_(p.message, 5000)
   ].filter(l => l !== null);
 
-  MailApp.sendEmail({
-    to: TO,
+  // Sent as a verified "Send mail as" alias of the deploying account, so the group delivers
+  // it to every member (including the account owner) instead of treating it as their own post.
+  GmailApp.sendEmail(TO, "Green Canteen enquiry: " + interest + " (" + name + ")", lines.join("\n"), {
+    from: FROM,
+    cc: COPY_TO,
     replyTo: email,
-    name: name + " (via Green Canteen website)",
-    subject: "Green Canteen enquiry: " + interest + " (" + name + ")",
-    body: lines.join("\n")
+    name: name + " (via Green Canteen website)"
   });
   return json_({ ok: true });
 }
