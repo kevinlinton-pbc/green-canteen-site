@@ -366,7 +366,7 @@ section { scroll-margin-top: 4.5rem; }
   const want = q.get("type");
   if (want) { const r = f.querySelector('[name="interest"][value="' + (want === "partner" ? "Partner" : "Volunteer") + '"]'); if (r) r.checked = true; }
   sync();
-  const FORM_ENDPOINT = "PASTE_APPS_SCRIPT_EXEC_URL_HERE"; // see apps-script/Code.gs
+  const FORM_ENDPOINT = "https://script.google.com/macros/s/AKfycbzf6yLagxxXdHfbcUctym-vCoaHF86HzQUeO4zUxzLxv5Karw8_Gpxcn4SBm03ls0xD/exec"; // see apps-script/Code.gs
   const btn = document.getElementById("send"), err = document.getElementById("err"), thanks = document.getElementById("thanks");
   f.addEventListener("submit", async e => {
     e.preventDefault();
