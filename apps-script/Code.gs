@@ -39,7 +39,7 @@ function doPost(e) {
   MailApp.sendEmail({
     to: TO,
     replyTo: email,
-    name: "Green Canteen website",
+    name: name + " (via Green Canteen website)",
     subject: "Green Canteen enquiry: " + interest + " (" + name + ")",
     body: lines.join("\n")
   });
