@@ -89,7 +89,7 @@ p { margin: 0; }
 .brand svg { width: 1.6rem; height: 1.6rem; color: var(--fg); flex: none; }
 .nav { display: flex; align-items: center; gap: 1.4rem; }
 .nav a { text-decoration: none; font-size: .95rem; }
-.nav a:not(.btn) { text-transform: uppercase; letter-spacing: .06em; font-size: .85rem; font-weight: 500; white-space: nowrap; }
+.nav a:not(.btn) { text-transform: lowercase; font-size: .95rem; font-weight: 500; white-space: nowrap; }
 .btn { text-transform: none; }
 .nav a:not(.btn):hover { text-decoration: underline; text-underline-offset: 4px; }
 .btn { display: inline-flex; align-items: center; gap: .5rem; font: 500 .95rem/1 var(--body); padding: .8rem 1.25rem; border-radius: var(--radius); border: 1.5px solid var(--mork-gron); background: var(--cta); color: var(--cta-ink); text-decoration: none; cursor: pointer; transition: transform .15s ease, box-shadow .15s ease; box-shadow: 0 3px 0 var(--mork-gron); }
@@ -186,21 +186,6 @@ section { scroll-margin-top: 4.5rem; }
 @media (max-width: 860px) { .menu-grid { grid-template-columns: 1fr; max-width: 30rem; } }
 
 /* ---------- Journey ---------- */
-.journey { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
-.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: .6rem; }
-.step { border: 1.5px solid var(--line); border-radius: 1rem; background: var(--card); }
-.step button { all: unset; box-sizing: border-box; width: 100%; display: grid; grid-template-columns: 2.6rem 1fr auto; gap: 1rem; align-items: center; padding: 1rem 1.2rem; cursor: pointer; }
-.step button:focus-visible { outline: 3px solid var(--fg); outline-offset: 2px; border-radius: 1rem; }
-.step .n { width: 2.6rem; height: 2.6rem; border-radius: 50%; border: 1.5px solid var(--line); display: grid; place-items: center; font-family: var(--display); font-size: 1.15rem; }
-.step.active { background: var(--lys-gron); color: var(--mork-gron); border-color: var(--mork-gron); }
-.step.active .n { background: var(--mork-gron); color: var(--lys-gron); border-color: var(--mork-gron); }
-.step h3 { font-size: 1.3rem; }
-.step small { display: block; font-size: .85rem; opacity: .8; font-family: var(--body); margin-top: .2rem; }
-.journey-panel { position: sticky; top: 6rem; border-radius: 1.5rem; overflow: hidden; border: 1.5px solid var(--line); background: var(--gron); aspect-ratio: 4/5; max-width: 100%; }
-.journey-panel img { width: 100%; height: 100%; object-fit: cover; display: block; transition: opacity .35s ease; }
-.journey-panel .cap { position: absolute; left: 1rem; right: 1rem; bottom: 1rem; background: var(--hvid); color: var(--mork-gron); border: 1.5px solid var(--mork-gron); border-radius: 1rem; padding: 1rem 1.1rem; display: grid; gap: .3rem; }
-.journey-panel .cap b { font-family: var(--display); font-weight: 400; font-size: 1.3rem; }
-@media (max-width: 860px) { .journey { grid-template-columns: 1fr; } .journey-panel { position: relative; top: 0; aspect-ratio: 4/3; } }
 
 /* ---------- Quote band ---------- */
 .quote { background: var(--pink); color: var(--mork-gron); border-block: 1.5px solid var(--mork-gron); }
@@ -243,8 +228,11 @@ section { scroll-margin-top: 4.5rem; }
 /* ---------- Get involved ---------- */
 .involve { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
 .tabs { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1.5rem; }
-.tabs button { font: 500 .95rem/1 var(--body); padding: .8rem 1.2rem; border-radius: var(--radius); border: 1.5px solid var(--line); background: var(--card); color: var(--fg); cursor: pointer; }
-.tabs button[aria-selected="true"] { background: var(--mork-gron); color: var(--lys-gron); border-color: var(--mork-gron); }
+.tabs button { font: 500 .95rem/1 var(--body); padding: .8rem 1.2rem; border-radius: var(--radius); border: 1.5px dashed var(--line); background: transparent; color: var(--fg); cursor: pointer; opacity: .75; display: inline-flex; align-items: center; gap: .5rem; }
+.tabs button:hover { opacity: 1; background: var(--card); }
+.tabs button[aria-selected="true"] { opacity: 1; border-style: solid; background: var(--mork-gron); color: var(--lys-gron); border-color: var(--mork-gron); font-weight: 700; box-shadow: 0 0 0 3px var(--bg-alt), 0 0 0 5px var(--mork-gron); }
+.tabs button[aria-selected="true"]::before { content: "✓"; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .tabs button[aria-selected="true"] { background: var(--lys-gron); color: var(--mork-gron); border-color: var(--lys-gron); box-shadow: 0 0 0 3px var(--bg-alt), 0 0 0 5px var(--lys-gron); } }
 .panel { border: 1.5px solid var(--line); border-radius: 1.5rem; background: var(--card); padding: clamp(1.4rem, 3vw, 2.4rem); display: grid; grid-template-columns: 1.2fr .8fr; gap: 2rem; align-items: center; }
 .panel h3 { font-size: var(--step-3); margin-bottom: 1rem; }
 .panel p { max-width: 50ch; }
@@ -284,11 +272,10 @@ section { scroll-margin-top: 4.5rem; }
   <div class="wrap">
     <a class="brand" href="#top" aria-label="Green Canteen, back to top"><svg aria-hidden="true"><use href="#gc-symbol"/></svg><span>Green Canteen</span></a>
     <nav class="nav" aria-label="Main">
-      <a href="#menu">Menu</a>
-      <a href="#how">How it works</a>
+      <a href="#menu">menu</a>
       <a href="#why">Why plant-based</a>
       <a href="#faq">FAQ</a>
-      <a class="btn" href="#join">Join us</a>
+      <a class="btn" href="contact.html">contact us</a>
     </nav>
   </div>
 </header>
@@ -335,23 +322,6 @@ section { scroll-margin-top: 4.5rem; }
       </div>
       <div class="menu-grid" id="menu-grid"></div>
       <p class="menu-note">These are dishes from our launch week. The menu rotates with what our volunteer cooks are making, so ask at the counter what's in the boxes today.</p>
-    </div>
-  </section>
-
-  <section id="how" class="section alt" aria-labelledby="how-title">
-    <div class="wrap">
-      <div class="section-head">
-        <p class="eyebrow">From pot to plate</p>
-        <h2 id="how-title">How a lunchbox gets to you</h2>
-        <p class="lede">A student-run non-profit, not a company. Every box passes only through student hands.</p>
-      </div>
-      <div class="journey">
-        <ol class="steps" id="steps"></ol>
-        <div class="journey-panel" aria-live="polite">
-          <img id="journey-img" src="assets/tomatoes.jpg" alt="">
-          <div class="cap"><b id="journey-cap-title"></b><span id="journey-cap-text"></span></div>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -404,10 +374,10 @@ section { scroll-margin-top: 4.5rem; }
   <section id="join" class="section alt" aria-labelledby="join-title">
     <div class="wrap">
       <div class="section-head">
-        <p class="eyebrow">Get involved</p>
+        <p class="eyebrow">Work with us</p>
         <h2 id="join-title">Pick up a box, a ladle, or a partnership</h2>
       </div>
-      <div class="tabs" role="tablist" aria-label="Ways to get involved">
+      <div class="tabs" role="tablist" aria-label="Ways to work with us">
         <button role="tab" id="tab-eat" aria-selected="true" aria-controls="panel">Eat with us</button>
         <button role="tab" id="tab-cook" aria-selected="false" aria-controls="panel">Volunteer</button>
         <button role="tab" id="tab-partner" aria-selected="false" aria-controls="panel">Partner</button>
@@ -424,11 +394,14 @@ section { scroll-margin-top: 4.5rem; }
       </div>
       <div class="faq">
         <details><summary>Where can I buy a lunchbox?</summary><div>At the Uppsala Student Union, Övre Slottsgatan 7. Look for the Green Canteen counter.</div></details>
+        <details><summary>Do I need to be a student or a Student Union member to buy a lunchbox?</summary><div>No. You don't need to be a member of Uppsala Student Union, and you don't need to be a student. Anyone can buy a lunchbox.</div></details>
         <details><summary>When are you open?</summary><div>Monday to Thursday, 09:00–16:00. Boxes are made in batches, so popular days can sell out before closing.</div></details>
-        <details><summary>How much does it cost?</summary><div>59 SEK, roughly €5, for a full lunch.</div></details>
-        <details><summary>Is everything vegan?</summary><div>Yes. Every dish is 100% plant-based: no meat, fish, dairy or eggs.</div></details>
+        <details><summary>What is the retail price of a lunchbox?</summary><div>Uppsala Student Union sets the price at the counter and currently sells our lunchboxes for 59 SEK, roughly €5, for a full lunch.</div></details>
+        <details><summary>Is everything vegan?</summary><div>Yes. Every dish is 100% plant-based: no meat, fish, dairy or eggs.<br><br><b>Allergens:</b> plant-based does not mean allergen-free. Our dishes can contain allergens such as gluten, soy, nuts, sesame and celery, and ingredients can change. Meals are prepared in a shared kitchen, so we cannot guarantee that there are no traces of allergens, including animal products such as milk, egg, fish or shellfish. Please check the ingredient list on each dish in the menu and the information at the point of sale, and ask us if you are unsure.</div></details>
         <details><summary>Who cooks the food?</summary><div>Student volunteers from Plant-Based Campus Uppsala. Meals are prepared at Ulleråkergård and brought to the Student Union.</div></details>
-        <details><summary>Can my student union or nation work with you?</summary><div>We'd like that. We are looking for more partners, including at SLU Uppsala. Reach out through the Plant-Based Campus website.</div></details>
+        <details><summary>Can my student union or nation buy from you or stock your products?</summary><div>Yes. Student unions and nations can order lunchboxes for an event or stock them on a regular basis. We're looking to expand our retail partners, including at SLU Uppsala. <a href="contact.html?type=partner">Get in touch</a>.</div></details>
+        <details><summary>Can businesses and other organisations buy from you?</summary><div>Yes. Companies, associations and other organisations are welcome to buy from us, either as a one-off order (for a meeting or event, say) or as a regular purchase or ongoing partnership. <a href="contact.html?type=partner">Tell us what you need</a>.</div></details>
+        <details><summary>What is the wholesale price for resellers?</summary><div>The price we charge resellers depends on how many orders they want to buy. We are 100% student- and volunteer-run and a nonprofit, and our goal is simply to increase the amount of sustainable food served on campus. We may also be able to lower our price when a reseller commits to keeping their own price under an agreed amount. <a href="contact.html?type=partner">Get in touch</a> to talk numbers.</div></details>
       </div>
     </div>
   </section>
@@ -440,11 +413,11 @@ section { scroll-margin-top: 4.5rem; }
       <svg class="sym" aria-hidden="true"><use href="#gc-symbol"/></svg>
       <div style="display:grid;gap:1rem;min-width:0">
         <p style="font-family:var(--display);font-size:var(--step-2);line-height:1.2">Green Canteen is a student-run lunch project by Plant-Based Campus Uppsala.</p>
-        <p>Read more and get in touch at <a href="https://www.plantbasedcampus.org">plantbasedcampus.org</a>.</p>
+        <p>Read more at <a href="https://www.plantbasedcampus.org">plantbasedcampus.org</a> or <a href="contact.html">get in touch</a>.</p>
       </div>
       <div class="addr"><b>Find us</b><span>Uppsala Student Union</span><span>Övre Slottsgatan 7</span><span>Mon–Thu, 09:00–16:00</span></div>
     </div>
-    <div class="foot-bottom"><span>© 2026 Plant-Based Campus</span><span>Keep it green.</span></div>
+    <div class="foot-bottom"><span>© 2026 Plant-Based Campus</span><span>cheap. tasty. sustainable.</span></div>
   </div>
 </footer>
 
@@ -518,15 +491,15 @@ section { scroll-margin-top: 4.5rem; }
 
   /* ---------- Menu ---------- */
   const dishes = [
-    { name: "Chilli sin carne", tag: "Smoky|& sweet", hue: ["#FFE1FE", "#36471D"], fill: "white",
+    { name: "Smoky & sweet", tag: "Chilli|sin carne", hue: ["#FFE1FE", "#36471D"], fill: "white",
       desc: "Smoky sweet potato and black bean chilli.",
       notes: ["Black beans for protein and fibre", "Sweet potato for body and a little sweetness", "Smoky, warming spice"],
       ing: { en: "Rice, sweet potato [20 %], black beans [10 %], kidney beans [10 %], bell peppers, crushed tomatoes, onion, chili powder, ground cumin, smoked paprika, vegetable broth (concentrated vegetable stock 67 % (water, vegetable juice concentrate 12 % (carrot, onion, leek)), salt, natural flavouring, sugar, flavouring, parsnip 1.0 %, modified corn starch, acid (citric acid), thickener (xanthan gum), garlic powder, sunflower oil), coriander, rapeseed oil.", sv: "Ris, sötpotatis [20 %], svarta bönor [10 %], kidneybönor [10 %], paprika, krossade tomater, lök, chilipulver, spiskummin, rökt paprikapulver, grönsaksbuljong (koncentrerad grönsaksfond 67 % (vatten, grönsaksjuicekoncentrat 12 % (morot, lök, purjolök)), salt, naturlig arom, socker, arom, palsternacka 1,0 %, modifierad majsstärkelse, syra (citronsyra), förtjockningsmedel (xantangummi), vitlökspulver, solrosolja), koriander, rapsolja." } },
-    { name: "Red lentil dal", tag: "Cosy|& golden", hue: ["#DFFEAE", "#1A2805"], fill: "pink",
+    { name: "Cosy & golden", tag: "Red lentil|dal", hue: ["#DFFEAE", "#1A2805"], fill: "pink",
       desc: "Slow-simmered red lentils with warm spices.",
       notes: ["Red lentils cook down soft and creamy", "Warm spices like cumin and turmeric", "A lunch that keeps you going through a lecture"],
       ing: { en: "Rice, red lentils [35 %], crushed tomatoes, coconut milk, onion, garlic, ginger, garam masala (spices (ginger, cumin, coriander, cardamom, cinnamon, black pepper, cayenne pepper, cloves), paprika, salt, onion, garlic, sugar), turmeric, red pepper chilli flakes, cinnamon, vegetable broth (concentrated vegetable stock 67 % (water, vegetable juice concentrate 12 % (carrot, onion, leek)), salt, natural flavouring, sugar, flavouring, parsnip 1.0 %, modified corn starch, acid (citric acid), thickener (xanthan gum), garlic powder, sunflower oil), rapeseed oil, chives.", sv: "Ris, röda linser [35 %], krossade tomater, kokosmjölk, lök, vitlök, ingefära, garam masala (kryddor (ingefära, spiskummin, koriander, kardemumma, kanel, svartpeppar, cayennepeppar, kryddnejlika), paprika, salt, lök, vitlök, socker), gurkmeja, chiliflakes, kanel, grönsaksbuljong (koncentrerad grönsaksfond 67 % (vatten, grönsaksjuicekoncentrat 12 % (morot, lök, purjolök)), salt, naturlig arom, socker, arom, palsternacka 1,0 %, modifierad majsstärkelse, syra (citronsyra), förtjockningsmedel (xantangummi), vitlökspulver, solrosolja), rapsolja, gräslök." } },
-    { name: "Coconut chickpea curry", tag: "Creamy|& mild", hue: ["#FFFFFF", "#36471D"], fill: "green",
+    { name: "Creamy & mild", tag: "Coconut|chickpea curry", hue: ["#FFFFFF", "#36471D"], fill: "green",
       desc: "Creamy coconut curry with chickpeas.",
       notes: ["Chickpeas in a coconut milk sauce", "Creamy and mild rather than hot", "Good for a first plant-based lunch"],
       ing: { en: "Rice, chickpeas [20 %], coconut milk [20 %], diced tomatoes, onion, spinach, garlic, mild curry powder (coriander, turmeric, fennel, cumin, fenugreek seed, black pepper, cayenne pepper), garam masala (spices (ginger, cumin, coriander, cardamom, cinnamon, black pepper, cayenne pepper, cloves), paprika, salt, onion, garlic, sugar), chilli flakes (optional), rapeseed oil.", sv: "Ris, kikärtor [20 %], kokosmjölk [20 %], tärnade tomater, lök, spenat, vitlök, mild curryblandning (koriander, gurkmeja, fänkål, spiskummin, bockhornsklöverfrö, svartpeppar, cayennepeppar), garam masala (kryddor (ingefära, spiskummin, koriander, kardemumma, kanel, svartpeppar, cayennepeppar, kryddnejlika), paprika, salt, lök, vitlök, socker), chiliflakes (valfritt), rapsolja." } }
@@ -593,33 +566,6 @@ section { scroll-margin-top: 4.5rem; }
     new ResizeObserver(draw).observe(cv);
   }
 
-  /* ---------- Journey ---------- */
-  const steps = [
-    { t: "Cooked at Ulleråkergård", s: "Volunteers batch-cook", img: "assets/tomatoes.jpg", alt: "A pile of heirloom tomatoes",
-      cap: "Volunteer cooks prepare big pots of plant-based food in the kitchen at Ulleråkergård." },
-    { t: "Packed into lunchboxes", s: "Portioned by hand", img: "assets/bowl.jpg", alt: "A plated plant-based bowl",
-      cap: "Each dish is portioned into a lunchbox, ready to go." },
-    { t: "Sold at the Student Union", s: "Övre Slottsgatan 7", img: "assets/noodles.jpg", alt: "A student holding a bowl of noodles",
-      cap: "Boxes go on sale Monday to Thursday, 09:00–16:00, for 59 SEK each." },
-    { t: "Eaten together", s: "Fuel for the afternoon", img: "assets/table.jpg", alt: "A table full of shared plant-based dishes",
-      cap: "You get a filling lunch, and every box shows student-run catering can work." }
-  ];
-  const ol = document.getElementById("steps"), jimg = document.getElementById("journey-img");
-  const jt = document.getElementById("journey-cap-title"), jx = document.getElementById("journey-cap-text");
-  function pick(i) {
-    ol.querySelectorAll(".step").forEach((li, k) => { li.classList.toggle("active", k === i); li.querySelector("button").setAttribute("aria-pressed", k === i); });
-    jimg.style.opacity = 0;
-    setTimeout(() => { jimg.src = steps[i].img; jimg.alt = steps[i].alt; jimg.style.opacity = 1; }, 180);
-    jt.textContent = steps[i].t; jx.textContent = steps[i].cap;
-  }
-  steps.forEach((s, i) => {
-    const li = document.createElement("li"); li.className = "step";
-    li.innerHTML = `<button type="button" id="step-${i}"><span class="n">${i + 1}</span><span><h3>${s.t}</h3><small>${s.s}</small></span><span class="chev" aria-hidden="true">→</span></button>`;
-    li.querySelector("button").addEventListener("click", () => pick(i));
-    ol.appendChild(li);
-  });
-  pick(0);
-
   /* ---------- Climate toggle ---------- */
   const vals = {
     now:   { c: 100, l: 100, ct: "100%", lt: "100%" },
@@ -645,11 +591,11 @@ section { scroll-margin-top: 4.5rem; }
     "tab-cook": { h: "Join the kitchen", img: "assets/salad-bite.jpg", alt: "A person taking a bite of fresh greens",
       p: "Green Canteen runs entirely on volunteers. We need people to cook, pack and sell. No experience needed, just a few hours and an appetite for good food.",
       li: ["Cook at Ulleråkergård", "Pack and carry lunchboxes", "Sell at the Student Union counter"],
-      cta: ["Contact Plant-Based Campus", "https://www.plantbasedcampus.org"] },
+      cta: ["Sign up to volunteer", "contact.html?type=volunteer"] },
     "tab-partner": { h: "Partner with us", img: "assets/table.jpg", alt: "A shared table of plant-based dishes",
-      p: "We want to bring plant-based lunches to more of Uppsala's campuses, including SLU Uppsala. Student unions, nations and kitchens are welcome to get in touch.",
-      li: ["Host a sales point", "Share kitchen space", "Co-organise events and shared meals"],
-      cta: ["Get in touch", "https://www.plantbasedcampus.org"] }
+      p: "Any business, organisation, student union or nation can buy from us or stock our lunchboxes. We also want to bring plant-based lunches to more of Uppsala's campuses, including SLU Uppsala.",
+      li: ["One-off order: lunchboxes for a single event, meeting or day", "Regular purchase or ongoing partnership: a standing order, a sales point or shared kitchen space"],
+      cta: ["Become a partner", "contact.html?type=partner"] }
   };
   const panel = document.getElementById("panel");
   function showTab(id) {
