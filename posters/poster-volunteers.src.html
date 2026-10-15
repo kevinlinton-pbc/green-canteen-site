@@ -45,11 +45,13 @@ html,body{margin:0}
 </main>
 <script>
 (()=>{const cv=document.getElementById("bg"),c=cv.getContext("2d"),W=cv.width,H=cv.height;
-c.fillStyle="#DFFEAE";c.fillRect(0,0,W,H);const cx=W*.5,cy=H*.46,seed=1;
-for(let k=26;k>=1;k--){c.beginPath();const base=k*W/16;
-for(let a=0;a<=Math.PI*2+.01;a+=.02){const wob=1+.07*Math.sin(a*6+seed)+.03*Math.sin(a*11+seed*2);
-const x=cx+Math.cos(a)*base*wob*1.1,y=cy+Math.sin(a)*base*wob*1.15;a===0?c.moveTo(x,y):c.lineTo(x,y)}
-c.closePath();c.fillStyle=k%2?"#36471D":"#DFFEAE";c.fill();c.lineWidth=5;c.strokeStyle="#36471D";c.stroke()}
+function ripples(){const P=document.querySelector(".poster").getBoundingClientRect(),T=document.querySelector(".tag").getBoundingClientRect(),k0=W/P.width;
+const cx=(T.left+T.width/2-P.left)*k0,cy=(T.top+T.height/2-P.top)*k0,rx0=T.width*k0*.36,ry0=T.height*k0*.36,rot=-5*Math.PI/180,step=W/15;
+c.setTransform(1,0,0,1,0,0);c.fillStyle="#DFFEAE";c.fillRect(0,0,W,H);
+for(let k=34;k>=0;k--){c.beginPath();const rx=rx0+k*step,ry=ry0+k*step;
+for(let a=0;a<=Math.PI*2+.01;a+=.02){const wob=1+.045*Math.sin(a*6+1)+.02*Math.sin(a*11+2)+.03*Math.sin(a*3+k*.35);
+const ex=Math.cos(a)*rx*wob,ey=Math.sin(a)*ry*wob,x=cx+ex*Math.cos(rot)-ey*Math.sin(rot),y=cy+ex*Math.sin(rot)+ey*Math.cos(rot);a===0?c.moveTo(x,y):c.lineTo(x,y)}
+c.closePath();c.fillStyle=k%2?"#DFFEAE":"#36471D";c.fill();c.lineWidth=5;c.strokeStyle="#36471D";c.stroke()}}
 const NS="http://www.w3.org/2000/svg";
 function build(host){const lines=host.dataset.sticker.split("|"),size=+host.dataset.size||90,inner=size*.62,outer=inner+size*.12;
 const svg=document.createElementNS(NS,"svg");svg.setAttribute("class","sticker");
@@ -58,5 +60,5 @@ lines.forEach((t,i)=>{const x=document.createElementNS(NS,"text");x.setAttribute
 svg.append(make("l3",outer),make("l2",inner),make("l1"));host.replaceChildren(svg);
 const fit=()=>{const b=svg.querySelector(".l1").getBBox(),p=outer/2+2;svg.setAttribute("viewBox",`${b.x-p} ${b.y-p} ${b.width+p*2} ${b.height+p*2}`);svg.style.width="100%";svg.style.height="auto"};fit();return fit}
 const f=[...document.querySelectorAll("[data-sticker]")].map(build);
-document.fonts.ready.then(()=>{f.forEach(x=>x());document.body.dataset.ready=1});})();
+document.fonts.ready.then(()=>{f.forEach(x=>x());ripples();document.body.dataset.ready=1});})();
 </script></body></html>
