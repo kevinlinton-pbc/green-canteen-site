@@ -7,8 +7,10 @@
 *{box-sizing:border-box}
 html,body{margin:0}
 .poster{width:297mm;height:420mm;background:var(--lys);color:var(--mork);position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;padding:16mm 22mm 14mm;font-family:var(--body)}
-.eyebrow{font-size:5.2mm;letter-spacing:.14em;text-transform:uppercase;font-weight:500;color:var(--gron)}
-.head{width:192mm;margin-top:6mm}
+.bg{position:absolute;inset:0;width:100%;height:100%}
+.poster>*:not(.bg){position:relative}
+.eyebrow{font-size:5mm;letter-spacing:.14em;text-transform:uppercase;font-weight:500;color:var(--mork);background:var(--hvid);border:.6mm solid var(--mork);border-radius:999px;padding:3mm 8mm}
+.head{width:226mm;margin-top:14mm}
 .sticker{display:block;overflow:visible}
 .sticker text{font-family:var(--display);letter-spacing:-.045em;word-spacing:.06em}
 .sticker .l3{fill:var(--mork);stroke:var(--mork)}
@@ -16,16 +18,11 @@ html,body{margin:0}
 .sticker .l1{fill:var(--mork)}
 .sticker .l2,.sticker .l3{stroke-linejoin:round;stroke-linecap:round;filter:url(#sticker-smooth)}
 [data-fill=pink]{--s-fill:var(--pink)}
-.art{position:relative;width:100%;height:146mm;flex:none;margin-top:6mm}
-.photo{position:absolute;border:.6mm solid var(--mork);border-radius:9mm;overflow:hidden;background:var(--gron)}
-.photo img{width:100%;height:100%;object-fit:cover;display:block}
-.p1{left:0;top:0;width:160mm;height:122mm;transform:rotate(-2.5deg)}
-.p2{right:0;top:14mm;width:84mm;height:124mm;transform:rotate(3.5deg)}
-.tag{position:absolute;left:84mm;top:80mm;width:122mm;transform:rotate(-6deg)}
-.facts{display:flex;gap:7mm;margin-top:12mm}
+.tag{width:150mm;margin-top:-4mm;transform:rotate(-5deg)}
+.facts{display:flex;gap:7mm;margin-top:16mm}
 .pill{border:.6mm solid var(--mork);border-radius:999px;background:var(--hvid);padding:4mm 9mm;font-family:var(--display);font-size:11mm;line-height:1}
-.lede{font-size:6.6mm;line-height:1.45;text-align:center;max-width:200mm;margin:7mm 0 0}
-.cta{margin-top:auto;display:flex;align-items:center;gap:10mm;background:var(--mork);color:var(--lys);border-radius:12mm;padding:8mm 12mm;width:100%}
+.lede{font-size:6.6mm;line-height:1.45;text-align:center;max-width:210mm;margin:9mm 0 0;background:var(--hvid);border:.6mm solid var(--mork);border-radius:9mm;padding:7mm 11mm}
+.cta{margin-top:auto;display:flex;align-items:center;gap:10mm;background:var(--mork);color:var(--lys);border-radius:12mm;padding:8mm 12mm;width:100%;border:.8mm solid var(--lys)}
 .cta .qr{width:38mm;height:38mm;background:var(--lys);border-radius:4mm;padding:3.2mm;flex:none}
 .cta .qr svg{width:100%;height:100%;display:block}
 .cta h3{font-family:var(--display);font-weight:400;font-size:13mm;line-height:1.05;margin:0}
@@ -34,13 +31,10 @@ html,body{margin:0}
 </style></head><body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="sticker-smooth" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse" x="-3000" y="-3000" width="6000" height="6000"><feMorphology operator="dilate" radius="7"/><feMorphology operator="erode" radius="7"/><feGaussianBlur stdDeviation="7"/><feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 30 -14"/></filter></svg>
 <main class="poster">
+  <canvas class="bg" id="bg" width="2246" height="3176"></canvas>
   <div class="eyebrow">Green Canteen · Plant-Based Campus Uppsala</div>
   <div class="head"><span data-sticker="Volunteers|wanted!" data-size="90"></span></div>
-  <div class="art">
-    <div class="photo p1"><img src="../assets/bowl.jpg" alt=""></div>
-    <div class="photo p2"><img src="../assets/noodles.jpg" alt=""></div>
-    <div class="tag" data-fill="pink"><span data-sticker="Cheap.|Tasty.|Sustainable." data-size="90"></span></div>
-  </div>
+  <div class="tag" data-fill="pink"><span data-sticker="Cheap.|Tasty.|Sustainable." data-size="90"></span></div>
   <div class="facts"><div class="pill">100% student-led</div><div class="pill">100% nonprofit</div></div>
   <p class="lede">Help us cook, pack and sell plant-based lunches at the Uppsala Student Union. No experience needed, just a few hours and an appetite for good food.</p>
   <div class="cta">
@@ -49,7 +43,13 @@ html,body{margin:0}
   </div>
 </main>
 <script>
-(()=>{const NS="http://www.w3.org/2000/svg";
+(()=>{const cv=document.getElementById("bg"),c=cv.getContext("2d"),W=cv.width,H=cv.height;
+c.fillStyle="#DFFEAE";c.fillRect(0,0,W,H);const cx=W*.5,cy=H*.46,seed=1;
+for(let k=26;k>=1;k--){c.beginPath();const base=k*W/16;
+for(let a=0;a<=Math.PI*2+.01;a+=.02){const wob=1+.07*Math.sin(a*6+seed)+.03*Math.sin(a*11+seed*2);
+const x=cx+Math.cos(a)*base*wob*1.1,y=cy+Math.sin(a)*base*wob*1.15;a===0?c.moveTo(x,y):c.lineTo(x,y)}
+c.closePath();c.fillStyle=k%2?"#36471D":"#DFFEAE";c.fill();c.lineWidth=5;c.strokeStyle="#36471D";c.stroke()}
+const NS="http://www.w3.org/2000/svg";
 function build(host){const lines=host.dataset.sticker.split("|"),size=+host.dataset.size||90,inner=size*.62,outer=inner+size*.12;
 const svg=document.createElementNS(NS,"svg");svg.setAttribute("class","sticker");
 const make=(c,sw)=>{const g=document.createElementNS(NS,"g");g.setAttribute("class",c);if(sw)g.setAttribute("stroke-width",sw);
