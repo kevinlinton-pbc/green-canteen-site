@@ -2,11 +2,11 @@
 <html lang="en"><head><meta charset="utf-8"><title>Green Canteen – Volunteers wanted (poster)</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=BIZ+UDPMincho&display=swap">
 <style>
-:root{--hvid:#fff;--lys:#DFFEAE;--gron:#36471D;--mork:#1A2805;--pink:#FFE1FE;--display:"BIZ UDPMincho","Hiragino Mincho ProN",Georgia,serif;--body:"Helvetica Neue",Helvetica,Arial,sans-serif}
+:root{--bgc:#DFFEAE;--headfill:#fff;--tagfill:#FFE1FE;--hvid:#fff;--lys:#DFFEAE;--gron:#36471D;--mork:#1A2805;--pink:#FFE1FE;--display:"BIZ UDPMincho","Hiragino Mincho ProN",Georgia,serif;--body:"Helvetica Neue",Helvetica,Arial,sans-serif}
 @page{size:297mm 420mm;margin:0}
 *{box-sizing:border-box}
 html,body{margin:0}
-.poster{width:297mm;height:420mm;background:var(--lys);color:var(--mork);position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;padding:16mm 22mm 16mm;justify-content:space-between;font-family:var(--body)}
+.poster{width:297mm;height:420mm;background:var(--bgc);color:var(--mork);position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;padding:16mm 22mm 16mm;justify-content:space-between;font-family:var(--body)}
 .bg{position:absolute;inset:0;width:100%;height:100%}
 .poster>*:not(.bg){position:relative}
 .brand{display:flex;align-items:center;gap:5mm;background:var(--hvid);border:.6mm solid var(--mork);border-radius:999px;padding:4mm 10mm 4mm 7mm;font-family:var(--display);font-size:14mm;line-height:1;color:var(--mork)}
@@ -16,6 +16,8 @@ html,body{margin:0}
 .sticker text{font-family:var(--display);letter-spacing:-.045em;word-spacing:.06em}
 .sticker .l3{fill:var(--mork);stroke:var(--mork)}
 .sticker .l2{fill:var(--s-fill,var(--hvid));stroke:var(--s-fill,var(--hvid))}
+.head{--s-fill:var(--headfill)}
+.tag{--s-fill:var(--tagfill)}
 .sticker .l1{fill:var(--mork)}
 .sticker .l2,.sticker .l3{stroke-linejoin:round;stroke-linecap:round;filter:url(#sticker-smooth)}
 [data-fill=pink]{--s-fill:var(--pink)}
@@ -35,7 +37,7 @@ html,body{margin:0}
   <canvas class="bg" id="bg" width="2246" height="3176"></canvas>
   <div class="brand"><svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 207.77 212.09"><path fill-rule="nonzero" fill="currentColor" d="M148.18 96.04L170.26 96.04C183.31 96.04 187.66 95.37 194.01 94.03C205.39 91.69 207.73 82.65 207.73 75.30C207.73 48.20 172.60 20.09 149.50 60.24C184.63 0.03 61.51 0.03 96.65 60.24C61.55 0.00 0.00 106.05 70.25 106.05C0.00 106.05 61.55 212.09 96.68 151.88C61.55 212.09 184.67 212.09 149.53 151.88C172.62 192.03 207.77 158.25 207.77 131.13C207.77 123.11 206.76 113.41 199.07 109.72C194.05 106.72 179.00 106.72 161.26 106.72L131.80 106.72L131.80 113.41C138.17 113.41 145.18 115.41 145.18 119.78L145.18 126.80C145.18 132.83 134.81 139.85 124.44 139.85C113.73 139.85 106.71 136.21 101.02 128.48C97.38 123.46 95.34 116.10 95.34 107.74C95.34 98.37 98.01 91.01 103.70 84.65C108.71 78.96 114.40 75.29 124.44 75.29C136.44 75.25 146.60 84.14 148.18 96.04"/></svg><span>Green Canteen</span></div>
   <div class="head"><span data-sticker="Volunteers|wanted!" data-size="90"></span></div>
-  <div class="tag" data-fill="pink"><span data-sticker="Cheap.|Tasty.|Sustainable." data-size="90"></span></div>
+  <div class="tag"><span data-sticker="Cheap.|Tasty.|Sustainable." data-size="90"></span></div>
   <div class="facts"><div class="pill">100% student-led</div><div class="pill">100% nonprofit</div></div>
   <p class="lede">Help us cook, pack and sell plant‑based lunches<br>at the Uppsala Student Union. No experience needed,<br>just a few hours and an appetite for good food.</p>
   <div class="cta">
@@ -44,14 +46,17 @@ html,body{margin:0}
   </div>
 </main>
 <script>
-(()=>{const cv=document.getElementById("bg"),c=cv.getContext("2d"),W=cv.width,H=cv.height;
+(()=>{const TH={green:["#DFFEAE","#fff","#FFE1FE"],pink:["#FFE1FE","#fff","#DFFEAE"],white:["#FFFFFF","#DFFEAE","#FFE1FE"]};
+const th=TH[new URLSearchParams(location.search).get("theme")]||TH.green,R=document.documentElement.style;
+R.setProperty("--bgc",th[0]);R.setProperty("--headfill",th[1]);R.setProperty("--tagfill",th[2]);
+const cv=document.getElementById("bg"),c=cv.getContext("2d"),W=cv.width,H=cv.height;
 function ripples(){const P=document.querySelector(".poster").getBoundingClientRect(),T=document.querySelector(".tag").getBoundingClientRect(),k0=W/P.width;
 const cx=(T.left+T.width/2-P.left)*k0,cy=(T.top+T.height/2-P.top)*k0,rx0=T.width*k0*.36,ry0=T.height*k0*.36,rot=-5*Math.PI/180,step=W/15;
-c.setTransform(1,0,0,1,0,0);c.fillStyle="#DFFEAE";c.fillRect(0,0,W,H);
+c.setTransform(1,0,0,1,0,0);c.fillStyle=th[0];c.fillRect(0,0,W,H);
 for(let k=34;k>=0;k--){c.beginPath();const rx=rx0+k*step,ry=ry0+k*step;
 for(let a=0;a<=Math.PI*2+.01;a+=.02){const wob=1+.045*Math.sin(a*6+1)+.02*Math.sin(a*11+2)+.03*Math.sin(a*3+k*.35);
 const ex=Math.cos(a)*rx*wob,ey=Math.sin(a)*ry*wob,x=cx+ex*Math.cos(rot)-ey*Math.sin(rot),y=cy+ex*Math.sin(rot)+ey*Math.cos(rot);a===0?c.moveTo(x,y):c.lineTo(x,y)}
-c.closePath();c.fillStyle=k%2?"#DFFEAE":"#36471D";c.fill();c.lineWidth=5;c.strokeStyle="#36471D";c.stroke()}}
+c.closePath();c.fillStyle=k%2?th[0]:"#36471D";c.fill();c.lineWidth=5;c.strokeStyle="#36471D";c.stroke()}}
 const NS="http://www.w3.org/2000/svg";
 function build(host){const lines=host.dataset.sticker.split("|"),size=+host.dataset.size||90,inner=size*.62,outer=inner+size*.12;
 const svg=document.createElementNS(NS,"svg");svg.setAttribute("class","sticker");
