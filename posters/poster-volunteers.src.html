@@ -9,7 +9,8 @@ html,body{margin:0}
 .poster{width:297mm;height:420mm;background:var(--lys);color:var(--mork);position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;padding:16mm 22mm 14mm;font-family:var(--body)}
 .bg{position:absolute;inset:0;width:100%;height:100%}
 .poster>*:not(.bg){position:relative}
-.eyebrow{font-size:5mm;letter-spacing:.14em;text-transform:uppercase;font-weight:500;color:var(--mork);background:var(--hvid);border:.6mm solid var(--mork);border-radius:999px;padding:3mm 8mm}
+.brand{display:flex;align-items:center;gap:5mm;background:var(--hvid);border:.6mm solid var(--mork);border-radius:999px;padding:4mm 10mm 4mm 7mm;font-family:var(--display);font-size:14mm;line-height:1;color:var(--mork)}
+.brand .logo{width:15mm;height:auto;flex:none}
 .head{width:226mm;margin-top:14mm}
 .sticker{display:block;overflow:visible}
 .sticker text{font-family:var(--display);letter-spacing:-.045em;word-spacing:.06em}
@@ -21,7 +22,7 @@ html,body{margin:0}
 .tag{width:150mm;margin-top:-4mm;transform:rotate(-5deg)}
 .facts{display:flex;gap:7mm;margin-top:16mm}
 .pill{border:.6mm solid var(--mork);border-radius:999px;background:var(--hvid);padding:4mm 9mm;font-family:var(--display);font-size:11mm;line-height:1}
-.lede{font-size:6.6mm;line-height:1.45;text-align:center;max-width:210mm;margin:9mm 0 0;background:var(--hvid);border:.6mm solid var(--mork);border-radius:9mm;padding:7mm 11mm}
+.lede{font-size:6.6mm;line-height:1.45;text-align:center;width:fit-content;white-space:nowrap;margin:9mm 0 0;background:var(--hvid);border:.6mm solid var(--mork);border-radius:9mm;padding:6mm 10mm}
 .cta{margin-top:auto;display:flex;align-items:center;gap:10mm;background:var(--mork);color:var(--lys);border-radius:12mm;padding:8mm 12mm;width:100%;border:.8mm solid var(--lys)}
 .cta .qr{width:38mm;height:38mm;background:var(--lys);border-radius:4mm;padding:3.2mm;flex:none}
 .cta .qr svg{width:100%;height:100%;display:block}
@@ -32,11 +33,11 @@ html,body{margin:0}
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="sticker-smooth" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse" x="-3000" y="-3000" width="6000" height="6000"><feMorphology operator="dilate" radius="7"/><feMorphology operator="erode" radius="7"/><feGaussianBlur stdDeviation="7"/><feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 30 -14"/></filter></svg>
 <main class="poster">
   <canvas class="bg" id="bg" width="2246" height="3176"></canvas>
-  <div class="eyebrow">Green Canteen · Plant-Based Campus Uppsala</div>
+  <div class="brand"><svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 207.77 212.09"><path fill-rule="nonzero" fill="currentColor" d="M148.18 96.04L170.26 96.04C183.31 96.04 187.66 95.37 194.01 94.03C205.39 91.69 207.73 82.65 207.73 75.30C207.73 48.20 172.60 20.09 149.50 60.24C184.63 0.03 61.51 0.03 96.65 60.24C61.55 0.00 0.00 106.05 70.25 106.05C0.00 106.05 61.55 212.09 96.68 151.88C61.55 212.09 184.67 212.09 149.53 151.88C172.62 192.03 207.77 158.25 207.77 131.13C207.77 123.11 206.76 113.41 199.07 109.72C194.05 106.72 179.00 106.72 161.26 106.72L131.80 106.72L131.80 113.41C138.17 113.41 145.18 115.41 145.18 119.78L145.18 126.80C145.18 132.83 134.81 139.85 124.44 139.85C113.73 139.85 106.71 136.21 101.02 128.48C97.38 123.46 95.34 116.10 95.34 107.74C95.34 98.37 98.01 91.01 103.70 84.65C108.71 78.96 114.40 75.29 124.44 75.29C136.44 75.25 146.60 84.14 148.18 96.04"/></svg><span>Green Canteen</span></div>
   <div class="head"><span data-sticker="Volunteers|wanted!" data-size="90"></span></div>
   <div class="tag" data-fill="pink"><span data-sticker="Cheap.|Tasty.|Sustainable." data-size="90"></span></div>
   <div class="facts"><div class="pill">100% student-led</div><div class="pill">100% nonprofit</div></div>
-  <p class="lede">Help us cook, pack and sell plant-based lunches at the Uppsala Student Union. No experience needed, just a few hours and an appetite for good food.</p>
+  <p class="lede">Help us cook, pack and sell plant‑based lunches<br>at the Uppsala Student Union. No experience needed,<br>just a few hours and an appetite for good food.</p>
   <div class="cta">
     <div class="qr">@@QR@@</div>
     <div><h3>Join the kitchen</h3><p>Scan to sign up, or visit<br><b>greencanteen.plantbasedcampus.org</b></p></div>
