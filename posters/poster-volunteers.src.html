@@ -6,12 +6,12 @@
 @page{size:297mm 420mm;margin:0}
 *{box-sizing:border-box}
 html,body{margin:0}
-.poster{width:297mm;height:420mm;background:var(--lys);color:var(--mork);position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;padding:16mm 22mm 14mm;font-family:var(--body)}
+.poster{width:297mm;height:420mm;background:var(--lys);color:var(--mork);position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;padding:16mm 22mm 16mm;justify-content:space-between;font-family:var(--body)}
 .bg{position:absolute;inset:0;width:100%;height:100%}
 .poster>*:not(.bg){position:relative}
 .brand{display:flex;align-items:center;gap:5mm;background:var(--hvid);border:.6mm solid var(--mork);border-radius:999px;padding:4mm 10mm 4mm 7mm;font-family:var(--display);font-size:14mm;line-height:1;color:var(--mork)}
 .brand .logo{width:15mm;height:auto;flex:none}
-.head{width:226mm;margin-top:14mm}
+.head{width:226mm}
 .sticker{display:block;overflow:visible}
 .sticker text{font-family:var(--display);letter-spacing:-.045em;word-spacing:.06em}
 .sticker .l3{fill:var(--mork);stroke:var(--mork)}
@@ -19,11 +19,11 @@ html,body{margin:0}
 .sticker .l1{fill:var(--mork)}
 .sticker .l2,.sticker .l3{stroke-linejoin:round;stroke-linecap:round;filter:url(#sticker-smooth)}
 [data-fill=pink]{--s-fill:var(--pink)}
-.tag{width:150mm;margin-top:-4mm;transform:rotate(-5deg)}
-.facts{display:flex;gap:7mm;margin-top:16mm}
+.tag{width:150mm;transform:rotate(-5deg)}
+.facts{display:flex;gap:7mm}
 .pill{border:.6mm solid var(--mork);border-radius:999px;background:var(--hvid);padding:4mm 9mm;font-family:var(--display);font-size:11mm;line-height:1}
-.lede{font-size:6.6mm;line-height:1.45;text-align:center;width:fit-content;white-space:nowrap;margin:9mm 0 0;background:var(--hvid);border:.6mm solid var(--mork);border-radius:9mm;padding:6mm 10mm}
-.cta{margin-top:auto;display:flex;align-items:center;gap:10mm;background:var(--mork);color:var(--lys);border-radius:12mm;padding:8mm 12mm;width:100%;border:.8mm solid var(--lys)}
+.lede{font-size:6.6mm;line-height:1.45;text-align:center;width:fit-content;white-space:nowrap;margin:0;background:var(--hvid);border:.6mm solid var(--mork);border-radius:9mm;padding:6mm 10mm}
+.cta{display:flex;align-items:center;gap:10mm;background:var(--mork);color:var(--lys);border-radius:12mm;padding:8mm 14mm 8mm 8mm;width:fit-content;border:.8mm solid var(--lys)}
 .cta .qr{width:38mm;height:38mm;background:var(--lys);border-radius:4mm;padding:3.2mm;flex:none}
 .cta .qr svg{width:100%;height:100%;display:block}
 .cta h3{font-family:var(--display);font-weight:400;font-size:13mm;line-height:1.05;margin:0}
