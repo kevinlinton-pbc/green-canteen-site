@@ -5,7 +5,7 @@ head=base[:base.index('<main class="poster">')]
 logo=re.search(r'<svg class="logo".*?</svg>',base,flags=re.S).group(0)
 brand='<div class="brand">'+logo+'<span>Green Canteen</span></div>'
 sticker_js=base[base.index('const NS="http://www.w3.org/2000/svg";'):]
-URL="greencanteen.plantbasedcampus.org/feedback.html"
+URL="greencanteen.plantbasedcampus.org/feedback"
 COMMON="""
 .poster>*{z-index:2}
 .brand{background:none;border:0;padding:0;gap:4mm;font-size:15mm}

@@ -4,7 +4,7 @@ qr=re.sub(r'width="(\d+)" height="\d+"',r'viewBox="0 0 \1 \1"',open("qr-survey.s
 head=base[:base.index('<main class="poster">')]
 brand=re.search(r'<div class="brand">.*?</div>',base,flags=re.S).group(0)
 sticker_js=base[base.index('const NS="http://www.w3.org/2000/svg";'):]
-URL="greencanteen.plantbasedcampus.org/feedback.html"
+URL="greencanteen.plantbasedcampus.org/feedback"
 COMMON="""
 .poster>*:not(.qrwrap){z-index:2}
 .qrwrap{position:relative;z-index:1;isolation:isolate}

@@ -4,7 +4,7 @@ qr=re.sub(r'width="(\d+)" height="\d+"',r'viewBox="0 0 \1 \1"',open("qr-survey.s
 head=base[:base.index('<main class="poster">')]
 brand=re.search(r'<div class="brand">.*?</div>',base,flags=re.S).group(0)
 sticker_js=base[base.index('const NS="http://www.w3.org/2000/svg";'):]
-URL="greencanteen.plantbasedcampus.org/feedback.html"
+URL="greencanteen.plantbasedcampus.org/feedback"
 
 def page(name,title,css,main,bg,band,line,origin,rxs,rys,rot,extra_root=""):
     h=head.replace("Volunteers wanted (poster)",title)
