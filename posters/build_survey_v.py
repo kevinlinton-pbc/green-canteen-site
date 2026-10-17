@@ -34,6 +34,7 @@ V={
 3:(brand+HEAD+'<div class="qrwrap"><div class="qrcard"><div class="qrbox">@@QR@@</div></div><div class="tag"><span data-sticker="Scan to tell us" data-size="90"></span></div></div>'+COPY+FOOT3,
    ".qrwrap{position:relative;margin-bottom:6mm}.qrwrap .qrcard{padding:10mm 10mm 27mm}.qrwrap .tag{position:absolute;left:50%;bottom:-7mm;width:104mm;transform:translateX(-50%) rotate(-4deg);--s-fill:var(--pink)}"),
 }
+V[4]=(V[3][0].replace(FOOT3,FOOT),V[3][1])
 for bgname,bg,tagfill in [("green","#DFFEAE","#FFE1FE"),("pink","#FFE1FE","#DFFEAE")]:
     for n,(main,css) in V.items():
         h=head.replace("Volunteers wanted (poster)","Survey poster %s %d"%(bgname,n)).replace("</style>",COMMON+".poster{background:%s}\n"%bg+css.replace("var(--pink)",tagfill)+"\n</style>",1)
