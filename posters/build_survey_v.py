@@ -32,7 +32,7 @@ V={
 2:(brand+HEAD+'<div class="qrdirect"><div class="qrbox big">@@QR@@</div><div class="scanpill">Scan to tell us</div></div>'+COPY+FOOT2,
    ".qrdirect{display:flex;flex-direction:column;align-items:center;gap:6mm}.qrbox.big{width:116mm;height:116mm}.scanpill{background:var(--hvid);border-radius:999px;padding:3.5mm 11mm;font-family:var(--display);font-size:12.5mm;line-height:1}"),
 3:(brand+HEAD+'<div class="qrwrap"><div class="qrcard"><div class="qrbox">@@QR@@</div></div><div class="tag"><span data-sticker="Scan to tell us" data-size="90"></span></div></div>'+COPY+FOOT3,
-   ".qrwrap{position:relative;margin-bottom:6mm}.qrwrap .qrcard{padding:10mm 10mm 30mm}.qrwrap .tag{position:absolute;left:50%;bottom:-3mm;width:104mm;transform:translateX(-50%) rotate(-4deg);--s-fill:var(--pink)}"),
+   ".qrwrap{position:relative;margin-bottom:6mm}.qrwrap .qrcard{padding:10mm 10mm 38mm}.qrwrap .tag{position:absolute;left:50%;bottom:5mm;width:104mm;transform:translateX(-50%) rotate(-4deg);--s-fill:var(--pink)}"),
 }
 V[4]=(V[3][0].replace(FOOT3,FOOT),V[3][1])
 for bgname,bg,tagfill in [("green","#DFFEAE","#FFE1FE"),("pink","#FFE1FE","#DFFEAE")]:
