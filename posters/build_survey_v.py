@@ -20,7 +20,7 @@ COMMON="""
 .copy .c2{font-size:7mm;line-height:1.35}
 .foot{font-size:5.8mm;text-align:center;line-height:1.4}
 .foot.plain b{background:none;color:var(--mork);padding:0;margin-top:1mm;display:block;font-size:6.2mm}
-.foot b{font-weight:500;background:var(--mork);color:var(--lys);border-radius:999px;padding:1mm 4.5mm;display:inline-block;margin-top:2mm}
+.foot b{font-weight:500;background:none;color:var(--mork);padding:0;display:block;margin-top:1mm;font-size:6.2mm}
 """
 COPY='<div class="copy"><div class="c1">Takes about a minute.</div><div class="c2">Our volunteer cooks read every answer.</div></div>'
 FOOT='<div class="foot">Or visit<br><b>%s</b></div>'%URL
