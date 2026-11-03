@@ -258,7 +258,7 @@ section { scroll-margin-top: 4.5rem; }
 /* ---------- Footer ---------- */
 .foot { background: var(--mork-gron); color: var(--lys-gron); padding-block: 4rem 2.5rem; }
 .foot .wrap { display: grid; gap: 2.5rem; }
-.foot-top { display: grid; grid-template-columns: auto 1fr auto; gap: 2rem; align-items: start; }
+.foot-top { display: grid; grid-template-columns: auto 1fr auto auto; gap: 2rem; align-items: start; }
 .foot .sym { width: 4.5rem; color: var(--lys-gron); }
 .foot p { max-width: 44ch; }
 .foot .addr { font-size: .95rem; display: grid; gap: .2rem; }
@@ -318,13 +318,13 @@ section { scroll-margin-top: 4.5rem; }
     <div class="wrap">
       <p class="eyebrow">Contact</p>
       <h1>Get in touch</h1>
-      <p class="lede">Want to cook, pack and sell with us, or buy from us as a business, organisation, student union or nation? Tell us a little and we'll get back to you.</p>
+      <p class="lede">Want to cook and pack with us, or buy from us as a business, organisation, student union or nation? Tell us a little and we'll get back to you.</p>
       <div class="thanks" id="thanks" role="status" hidden><b>Thank you!</b> Your message has been sent to the Green Canteen team. We'll be in touch soon.</div>
       <form class="cform" id="cform" method="POST">
         <input type="text" name="website" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
         <fieldset>
           <legend>I want to…</legend>
-          <label class="choice"><input type="radio" name="interest" value="Volunteer" required><span>Become a volunteer<small>Cook, pack or sell at the Student Union counter</small></span></label>
+          <label class="choice"><input type="radio" name="interest" value="Volunteer" required><span>Become a volunteer<small>Cook or pack lunchboxes in the kitchen</small></span></label>
           <label class="choice"><input type="radio" name="interest" value="Partner"><span>Become a partner<small>Buy from us or stock our lunchboxes</small></span></label>
         </fieldset>
         <fieldset id="ptype" hidden>
@@ -353,6 +353,7 @@ section { scroll-margin-top: 4.5rem; }
         <p>Read more at <a href="https://www.plantbasedcampus.org">plantbasedcampus.org</a>. Bought a lunch? <a href="feedback.html">Tell us how it was</a>.</p>
       </div>
       <div class="addr"><b>Find us</b><span>Uppsala Student Union</span><span>Övre Slottsgatan 7</span><span>Mon–Thu, 09:00–16:00</span></div>
+      <div class="addr"><b>Members only</b><span>Law Student Association</span><span>Dag Hammarskölds Väg 9</span><span>Mon–Fri, 09:00–17:00</span></div>
     </div>
     <div class="foot-bottom"><span>© 2026 Plant-Based Campus</span><span>cheap. tasty. sustainable.</span></div>
   </div>
